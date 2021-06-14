@@ -6,8 +6,8 @@ from Alkyl_LPS import *
 from Alkyl_PC import *
 from Alkyl_PE import *
 from Alkyl_PS import *
-from BDP import*
-from BMP import*
+from BDP import *
+from BMP import *
 from Carn import *
 from CDP_DG import *
 from CE import *
@@ -61,73 +61,73 @@ from Taurine import *
 from TG import *
 
 ALL_LIPID_CLASSES = {
-"AcGM2",
-"AcGM3",
-"Alkyl_LPC",
-"Alkyl_LPE",
-"Alkyl_LPS",
-"Alkyl_PC",
-"Alkyl_PE",
-"Alkyl_PS",
-"BDP",
-"BMP",
-"Carn",
-"CDP_DG",
-"CE",
-"Ceramide",
-"Ceramide_P",
-"CL",
-"CPE",
-"CPI",
-"DG",
-"DGDG",
-"DGTS",
-"DMPE",
-"ErgE",
-"Ethanolamine",
-"FA",
-"FAHFA",
-"GcGM2",
-"GcGM3",
-"HemiBMP",
-"HexCer",
-"LacCer",
-"LCB_P",
-"LCB",
-"LPA",
-"LPC",
-"LPE",
-"LPG",
-"LPI",
-"LPS",
-"LysoCL",
-"LysoCPE",
-"LysoCPI",
-"LysoHexCer",
-"LysoSM",
-"MG",
-"MGDG",
-"MIP2C",
-"MIPC",
-"MMPE",
-"N_Acyl_PE",
-"N_Acyl_PS",
-"PA",
-"PC",
-"PE",
-"PG",
-"PI",
-"PS",
-"SM",
-"Sulfatide",
-"Taurine",
-"TG",
+    "AcGM2",
+    "AcGM3",
+    "Alkyl_LPC",
+    "Alkyl_LPE",
+    "Alkyl_LPS",                # 5
+    "Alkyl_PC",
+    "Alkyl_PE",
+    "Alkyl_PS",
+    "BDP",
+    "BMP",                      # 10
+    "Carn",
+    "CDP_DG",
+    "CE",
+    "Ceramide",
+    "Ceramide_P",               # 15
+    "CL",
+    "CPE",
+    "CPI",
+    "DG",
+    "DGDG",                     # 20
+    "DGTS",
+    "DMPE",
+    "ErgE",
+    "Ethanolamine",
+    "FA",                       # 25
+    "FAHFA",
+    "GcGM2",
+    "GcGM3",
+    "HemiBMP",
+    "HexCer",                   # 30
+    "LacCer",
+    "LCB_P",
+    "LCB",
+    "LPA",
+    "LPC",                      # 35
+    "LPE",
+    "LPG",
+    "LPI",
+    "LPS",
+    "LysoCL",                   # 40
+    "LysoCPE",
+    "LysoCPI",
+    "LysoHexCer",
+    "LysoSM",
+    "MG",                       # 45
+    "MGDG",
+    "MIP2C",
+    "MIPC",
+    "MMPE",
+    "N_Acyl_PE",                # 50
+    "N_Acyl_PS",
+    "PA",
+    "PC",
+    "PE",
+    "PG",                       # 55
+    "PI",
+    "PS",
+    "SM",
+    "Sulfatide",
+    "Taurine",                  # 60
+    "TG",
 }
 
 from lipidRules import *
 
-def print_spectrum(lipid_class, chains=[], adduct=""):
 
+def print_spectrum(lipid_class, chains=[], adduct=""):
     if adduct not in ALL_ADDUCTS:
         print("Adduct '" + adduct + "' is not a supported adduct form.")
         print("Valid adducts are:")
@@ -142,7 +142,7 @@ def print_spectrum(lipid_class, chains=[], adduct=""):
             print(lipid)
         return
 
-    eval_str = lipid_class +\
+    eval_str = lipid_class + \
                "('" + lipid_class + "', " + chains.__str__() + ", '" + adduct + "').printNist()"
 
     print(eval(eval_str))
