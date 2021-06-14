@@ -75,9 +75,11 @@ class AcGM3(SphingoLipid):
 
 
 
-x  = AcGM3("AcGM3",[[18,1,1], [24,1,0]],  adduct="[M-H]-")
-print x.printNist()
+# calicolipidlibrary.print_spectrum("AcGM3", [[18,1,1], [24,1,0]], "[M-H]-")
 
-x  = AcGM3("AcGM3",[[18,1,1], [23,0,0]],  adduct="[M+H]+")
-print x.printNist()
+# x  = AcGM3("AcGM3",[[18,1,1], [24,1,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# x  = AcGM3("AcGM3",[[18,1,1], [23,0,0]],  adduct="[M+H]+")
+# print x.printNist()
 
