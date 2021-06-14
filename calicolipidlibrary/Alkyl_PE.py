@@ -92,6 +92,7 @@ class Alkyl_PE(alkylGPL):
 
 
 
-x  = Alkyl_PE("Alkyl_PE",[[18,1,0], [22,6,0]],  adduct="[M-H]-")
-print x.printNist()
+# x  = Alkyl_PE("Alkyl_PE",[[18,1,0], [22,6,0]],  adduct="[M-H]-")
+# print x.printNist()
 
+# calicolipidlibrary.print_spectrum("Alkyl_PE", [[18,1,0], [22,6,0]], "[M+AcOH-H]-")
