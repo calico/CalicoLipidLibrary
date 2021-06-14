@@ -83,9 +83,11 @@ class Alkyl_PC(alkylGPL):
 
 
 
-x  = Alkyl_PC("Alkyl_PC",[[16,0,0], [16,0,0]],  adduct="[M+FA-H]-")
-print x.printNist()
+# x  = Alkyl_PC("Alkyl_PC",[[16,0,0], [16,0,0]],  adduct="[M+FA-H]-")
+# print x.printNist()
+#
+#
+# x  = Alkyl_PC("Alkyl_PC",[[16,1,0], [18,0,0]],  adduct="[M+FA-H]-")
+# print x.printNist()
 
-
-x  = Alkyl_PC("Alkyl_PC",[[16,1,0], [18,0,0]],  adduct="[M+FA-H]-")
-print x.printNist()
+# calicolipidlibrary.print_spectrum("Alkyl_PC", [[16,1,0], [18,0,0]], "[M+FA-H]-")
