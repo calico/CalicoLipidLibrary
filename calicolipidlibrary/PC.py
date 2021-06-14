@@ -121,14 +121,16 @@ class PC(GPL):
 
 
 
-x  = PC("PC",[[16,0,0], [18,1,0]],  adduct="[M+Na]+")
-print x.printNist()
-
-
-
-x  = PC("PC",[[16,0,0], [18,1,0]],  adduct="[M+H]+")
-print x.printNist()
-
-
-x  = PC("PC",[[16,0,0], [16,0,0]],  adduct="[M+FA-H]-")
-print x.printNist()
+# x  = PC("PC",[[16,0,0], [18,1,0]],  adduct="[M+Na]+")
+# print x.printNist()
+#
+#
+#
+# x  = PC("PC",[[16,0,0], [18,1,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+#
+# x  = PC("PC",[[16,0,0], [16,0,0]],  adduct="[M+FA-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("PC",[[18,0,0], [20,4,0]],  adduct="[M+FA-H]-")

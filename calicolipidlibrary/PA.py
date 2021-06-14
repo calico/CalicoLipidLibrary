@@ -50,6 +50,7 @@ class PA(GPL):
 
 
 
-x  = PA("PA",[[16,0,0], [18,1,0]],  adduct="[M-H]-")
-print x.printNist()
-
+# x  = PA("PA",[[16,0,0], [18,1,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("PA",[[16,0,0], [18,1,0]], "[M-H]-")

@@ -91,7 +91,8 @@ class N_Acyl_PS(NAcylGPL):
 
 
 
-
-x  = N_Acyl_PS("N_Acyl_PS",[[16,0,0], [18,1,0], [18,2,0]],  adduct="[M+H]+")
-print x.printNist()
-
+#
+# x  = N_Acyl_PS("N_Acyl_PS",[[16,0,0], [18,1,0], [18,2,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("N_Acyl_PS",[[16,0,0], [18,1,0], [18,2,0]], "[M+H]+")

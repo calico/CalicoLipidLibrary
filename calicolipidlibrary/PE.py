@@ -119,7 +119,8 @@ class PE(GPL):
 
 
 
-
-x  = PE("PE",[[16,0,0], [18,1,0]],  adduct="[M-H]-")
-print x.printNist()
-
+#
+# x  = PE("PE",[[16,0,0], [18,1,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("PE",[[16,0,0], [18,1,0]], "[M-H]-")

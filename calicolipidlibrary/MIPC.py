@@ -61,8 +61,10 @@ class MIPC(SphingoLipid):
 
 
 
-x  = MIPC("MIPC",[[18,0,2], [26,0,0]],  adduct="[M-H]-")
-print x.printNist()
-
-x  = MIPC("MIPC",[[18,0,1], [26,0,1]],  adduct="[M-H]-")
-print x.printNist()
+# x  = MIPC("MIPC",[[18,0,2], [26,0,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# x  = MIPC("MIPC",[[18,0,1], [26,0,1]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("MIPC",[[18,0,2], [26,0,0]],  adduct="[M-H]-")

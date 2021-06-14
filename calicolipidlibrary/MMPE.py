@@ -85,6 +85,7 @@ class MMPE(GPL):
 
 
 
-x  = MMPE("MMPE",[[16,1,0], [16,1,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = MMPE("MMPE",[[16,1,0], [16,1,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("MMPE",[[16,1,0], [16,1,0]], "[M+H]+")
