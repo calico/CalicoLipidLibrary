@@ -46,6 +46,7 @@ class CE(singleAcyl):
 
 
 
-x  = CE("CE",[[18,2,1]],  adduct="[M+Na]+")
-print x.printNist()
-
+# x  = CE("CE",[[18,2,1]],  adduct="[M+Na]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("CE", [[18,2,1]],"[M+Na]+")

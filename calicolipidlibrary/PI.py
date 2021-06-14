@@ -105,8 +105,9 @@ class PI(GPL):
 
 
 
-x  = PI("PI",[[20,4,0], [16,0,0]],  adduct="[M+Na]+")
-print x.printNist()
-x  = PI("PI",[[16,0,0], [20,4,0]],  adduct="[M-H]-")
-print x.printNist()
+# x  = PI("PI",[[20,4,0], [16,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
+# x  = PI("PI",[[16,0,0], [20,4,0]],  adduct="[M-H]-")
+# print x.printNist()
 
+# calicolipidlibrary.print_spectrum("PI", [[20,4,0], [16,0,0]], "[M+Na]+")

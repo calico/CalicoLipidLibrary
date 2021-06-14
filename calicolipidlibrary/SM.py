@@ -75,11 +75,11 @@ class SM(SphingoLipid):
 
 
 
-x  = SM("SM",[[18,1,0], [20,0,0]],  adduct="[M+Na]+")
-print x.printNist()
-x  = SM("SM",[[18,1,1], [20,0,0]],  adduct="[M+Na]+")
-print x.printNist()
-x  = SM("SM",[[18,1,2], [20,0,0]],  adduct="[M+Na]+")
-print x.printNist()
-
-
+# x  = SM("SM",[[18,1,0], [20,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
+# x  = SM("SM",[[18,1,1], [20,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
+# x  = SM("SM",[[18,1,2], [20,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("SM",[[18,1,0], [20,4,3]],  adduct="[M+Na]+")

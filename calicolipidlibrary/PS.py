@@ -94,6 +94,7 @@ class PS(GPL):
 
 
 
-x  = PS("PS",[[16,0,0], [18,1,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = PS("PS",[[16,0,0], [18,1,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("PS",[[16,0,0], [18,1,0]],  adduct="[M+H]+")
