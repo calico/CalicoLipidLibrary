@@ -81,8 +81,8 @@ class Alkyl_LPE(AlkylLysoGPL):
 			if target: handle.close()
 
 
+#calicolipidlibrary.print_spectrum("Alkyl_LPE", [[18,1,0]], "[M+H]+")
 
-
-x  = Alkyl_LPE("Alkyl_LPE",[[18,1,0]],  adduct="[M+H]+")
-print x.printNist()
+# x  = Alkyl_LPE("Alkyl_LPE",[[18,1,0]],  adduct="[M+H]+")
+# print x.printNist()
 
