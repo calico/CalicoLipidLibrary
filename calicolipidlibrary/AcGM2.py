@@ -95,7 +95,8 @@ class AcGM2(SphingoLipid):
 
 
 
+# calicolipidlibrary.print_spectrum("AcGM2",[[18,1,1], [18,0,0]], "[M+H]+")
 
-x  = AcGM2("AcGM2",[[18,1,1], [18,0,0]],  adduct="[M+H]+")
-print x.printNist()
+# x  = AcGM2("AcGM2",[[18,1,1], [18,0,0]],  adduct="[M+H]+")
+# print x.printNist()
 
