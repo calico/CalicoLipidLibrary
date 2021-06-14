@@ -74,12 +74,12 @@ class Alkyl_LPC(AlkylLysoGPL):
 			if target: handle.close()
 
 
+# calicolipidlibrary.print_spectrum("Alkyl_LPC",[[18,1,0]], "[M+H]+")
 
-
-x  = Alkyl_LPC("Alkyl_LPC",[[18,1,0]],  adduct="[M+H]+")
-print x.printNist()
-
-x  = Alkyl_LPC("Alkyl_LPC",[[18,1,0]],  adduct="[M+Li]+")
-print x.printNist()
+# x  = Alkyl_LPC("Alkyl_LPC",[[18,1,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# x  = Alkyl_LPC("Alkyl_LPC",[[18,1,0]],  adduct="[M+Li]+")
+# print x.printNist()
 
 
