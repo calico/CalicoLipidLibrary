@@ -97,11 +97,12 @@ class BMP(GPL):
 
 
 
-x  = BMP("BMP",[[18,1,0], [18,1,0]],  adduct="[M+H]+")
-print x.printNist()
+# x  = BMP("BMP",[[18,1,0], [18,1,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+#
+#
+# x  = BMP("BMP",[[10,0,0], [12,4,0]],  adduct="[M-H]-")
+# print x.printNist()
 
-
-
-x  = BMP("BMP",[[10,0,0], [12,4,0]],  adduct="[M-H]-")
-print x.printNist()
-
+# calicolipidlibrary.print_spectrum("BMP", [[18,1,0], [18,3,0]], "[M+H]+")
