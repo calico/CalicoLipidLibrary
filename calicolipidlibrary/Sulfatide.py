@@ -51,9 +51,11 @@ class Sulfatide(SphingoLipid):
 
 
 
-x  = Sulfatide("Sulfatide",[[18,1,1], [18,0,1]],  adduct="[M-H]-")
-print x.printNist()
-
-
-x  = Sulfatide("Sulfatide",[[18,0,1], [16,1,0]],  adduct="[M+FA-H]-")
-print x.printNist()
+# x  = Sulfatide("Sulfatide",[[18,1,1], [18,0,1]],  adduct="[M-H]-")
+# print x.printNist()
+#
+#
+# x  = Sulfatide("Sulfatide",[[18,0,1], [16,1,0]],  adduct="[M+FA-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("Sulfatide", [[18,0,1], [16,1,0]], "[M+FA-H]-")

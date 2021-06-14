@@ -52,7 +52,7 @@ class Taurine(singleAcyl):
 
 
 
+# x  = Taurine("Taurine",[[18,0,0]],  adduct="[M+H]+")
+# print x.printNist()
 
-x  = Taurine("Taurine",[[18,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# calicolipidlibrary.print_spectrum("Taurine", [[18,0,0]], "[M+H]+")

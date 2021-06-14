@@ -48,11 +48,12 @@ class Carn(singleAcyl):
 			if target: handle.close()
 
 
-x  = Carn("Carn",[[12,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
-
-
-x  = Carn("Carn",[[16,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = Carn("Carn",[[12,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+#
+#
+# x  = Carn("Carn",[[16,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("Carn", [[16,0,0]], "[M+H]+")

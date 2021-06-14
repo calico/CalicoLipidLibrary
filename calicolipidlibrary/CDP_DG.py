@@ -107,9 +107,10 @@ class CDP_DG(GPL):
 
 
 
-x  = CDP_DG("CDP_DG",[[18,1,0], [18,1,0]],  adduct="[M+Na]+")
-print x.printNist()
-
-x  = CDP_DG("CDP_DG",[[16,0,0], [16,0,0]],  adduct="[M+Na]+")
-print x.printNist()
-
+# x  = CDP_DG("CDP_DG",[[18,1,0], [18,1,0]],  adduct="[M+Na]+")
+# print x.printNist()
+#
+# x  = CDP_DG("CDP_DG",[[16,0,0], [16,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("CDP_DG", [[18,1,0], [18,2,0]], "[M+Na]+")

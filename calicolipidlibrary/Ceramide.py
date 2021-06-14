@@ -126,20 +126,19 @@ class Ceramide(SphingoLipid):
 			class_name = cls.__name__ 
 			for c in parent.chain_sets:
 				for adduct in adduct_set:
-					x  = cls(class_name, c, adduct=adduct)						
+					x  = cls(class_name, c, adduct=adduct)
 					content = x.printNist()
 					if target: handle.write(content)
 					else: sys.stdout.write(content)
 			if target: handle.close()
 
+# calicolipidlibrary.print_spectrum("Ceramide",[[18,1,1], [16,0,0]], "[M+H]+")
 
-
-
-x  = Ceramide("Ceramide",[[18,1,1], [16,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
-x  = Ceramide("Ceramide",[[18,1,1], [24,1,0]],  adduct="[M+H]+")
-print x.printNist()
-
-x  = Ceramide("Ceramide",[[18,0,1], [15,0,0]],  adduct="[M-H]-")
-print x.printNist()
+# x  = Ceramide("Ceramide",[[18,1,1], [16,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# x  = Ceramide("Ceramide",[[18,1,1], [24,1,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# x  = Ceramide("Ceramide",[[18,0,1], [15,0,0]],  adduct="[M-H]-")
+# print x.printNist()
