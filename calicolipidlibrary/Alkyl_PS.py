@@ -89,6 +89,7 @@ class Alkyl_PS(alkylGPL):
 
 
 
-x  = Alkyl_PS("Alkyl_PS",[[16,0,0], [18,2,0]],  adduct="[M+H]+")
-print x.printNist()
+# x  = Alkyl_PS("Alkyl_PS",[[16,0,0], [18,2,0]],  adduct="[M+H]+")
+# print x.printNist()
 
+# calicolipidlibrary.print_spectrum("Alkyl_PS", [[16,0,0], [18,2,0]], "[M+H]+")
