@@ -61,6 +61,7 @@ class BDP(CardioLipin):
 
 
 
-x  = BDP("BDP",[[18,1,0], [18,1,0], [18,1,0],[18,1,0]],  adduct="[M-H]-")
-print x.printNist()
+# x  = BDP("BDP",[[18,1,0], [18,1,0], [18,1,0],[18,1,0]],  adduct="[M-H]-")
+# print x.printNist()
 
+# calicolipidlibrary.print_spectrum("BDP", [[18,1,0], [18,0,0], [16,1,0],[16,0,0]], "[M-H]-")
