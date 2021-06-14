@@ -4,3 +4,4 @@ dist/
 build/
 calicolipidlibrary.egg-info/
 calicolipidlibrary/__pycache__/
+calicolipidlibrary/*.pyc
