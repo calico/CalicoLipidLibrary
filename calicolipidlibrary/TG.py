@@ -55,11 +55,13 @@ class TG(Triglyceride):
 
 
 
-x  = TG("TG",[[15,0,0], [18,1,0], [15,0,0]],  adduct="[M+Na]+")
-print x.printNist()
+# x  = TG("TG",[[15,0,0], [18,1,0], [15,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
+#
+# x  = TG("TG",[[15,0,0], [18,1,0], [15,0,0]],  adduct="[M+NH4]+")
+# print x.printNist()
+#
+# x  = TG("TG",[[15,0,0], [18,1,0], [15,0,0]],  adduct="[M+Li]+")
+# print x.printNist()
 
-x  = TG("TG",[[15,0,0], [18,1,0], [15,0,0]],  adduct="[M+NH4]+")
-print x.printNist()
-
-x  = TG("TG",[[15,0,0], [18,1,0], [15,0,0]],  adduct="[M+Li]+")
-print x.printNist()
+# calicolipidlibrary.print_spectrum("TG",[[16,0,0], [18,1,0], [18,0,0]], "[M+NH4]+")
