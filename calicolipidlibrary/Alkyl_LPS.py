@@ -54,6 +54,7 @@ class Alkyl_LPS(AlkylLysoGPL):
 
 
 
-x  = Alkyl_LPS("Alkyl_LPS",[[16,0,0]],  adduct="[M+H]+")
-print x.printNist()
+# x  = Alkyl_LPS("Alkyl_LPS",[[16,0,0]],  adduct="[M+H]+")
+# print x.printNist()
 
+# calicolipidlibrary.print_spectrum("Alkyl_LPS",[[16,0,0]], "[M+H]+")
