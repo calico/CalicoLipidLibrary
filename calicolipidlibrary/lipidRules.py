@@ -47,9 +47,10 @@ ADDUCT_CHARGE = {
 
 
 POS_ADDUCTS = {"[M]",  "[M+H]+", "[M+Na]+",  "[M+NH4]+", "[M+K]+", "[M+2H]2+", "[M+Li]+"}
-NEG_ADDUCTS =  {"[M-H]-", "[M+Cl]-","[M+37Cl]-", "[M+FA-H]-", "[M-CH3]-", "[M+AcOH-H]-", "[M-2H]2-", "[M-3H]3-" }
+NEG_ADDUCTS = {"[M-H]-", "[M+Cl]-","[M+37Cl]-", "[M+FA-H]-", "[M-CH3]-", "[M+AcOH-H]-", "[M-2H]2-", "[M-3H]3-" }
 
-
+ALL_ADDUCTS = POS_ADDUCTS.copy()
+ALL_ADDUCTS |= NEG_ADDUCTS.copy()
 
 def MW(form):  # calc MW from string that is chemical formula
 	parsed = re.findall(r'([A-Z][a-z]*)(\d*)', form)
@@ -623,7 +624,6 @@ class Lipid:
 		print "MW:", MW_list(atoms)
 		print "FORMULA:", self.prettyFormula()
 
-
 	def theoreticalDigest(self):
 
 		MASS = MW_list(self.MF())
@@ -632,7 +632,6 @@ class Lipid:
 		FRAGMENTS = []
 		#FRAGMENTS.append( [PREC, 1000, "pre"] )
 		return FRAGMENTS
-
 
 
 #DG, PA, PC, PE, PG, PI, PS, BMP, HexDG, MMPE, DMPE, DG, FAFHFA
