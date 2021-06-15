@@ -192,7 +192,6 @@ calicolipidlibrary.print_spectrum("",,"")
 calicolipidlibrary.print_spectrum("",,"")
 
 calicolipidlibrary.print_spectrum("MIPC",[[18,0,2], [26,0,0]],  adduct="[M-H]-")
-
 calicolipidlibrary.print_spectrum("MMPE",[[16,1,0], [16,1,0]], "[M+H]+")
 calicolipidlibrary.print_spectrum("N_Acyl_PE",[[16,1,0], [18,2,0], [20,2,0]], "[M+H]+")
 calicolipidlibrary.print_spectrum("N_Acyl_PS",[[16,0,0], [18,1,0], [18,2,0]], "[M+H]+")
