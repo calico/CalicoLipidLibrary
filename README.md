@@ -9,10 +9,9 @@ Scripts to create in silico lipid fragmentation spectra, based on analysis of ch
 
 3. `python setup.py sdist bdist_wheel`
 
-# Generate Entire Lipid Library
+# Generate A Lipid Library MSP File
 
-This is the primary usage of this package.  Produce an msp file for all desired/classes and adducts, like so:
-
+This is the primary usage of this package.  Produce an msp file for all desired in the appropriate ionization mode:
 ```
 # all negative mode lipids
 python2.7 generateDB.py -m "neg"
@@ -26,11 +25,11 @@ python2.7 generateDB.py -m "pos" -c "PC,PE,ImaginaryClass,PS"
 # Sphingolipids neg mode, into file named 'neg_sphingolipids.msp'
 python2.7 generateDB.py -m "neg" -c "AcGM2, AcGM3, GcGM2, GcGM3, MIP2C, MIPC, HexCer, LacCer, Sulfatide, SM, Ceramide, Ceramide_P" -n "neg_sphingolipids"
 
-#  Glycophospholipids pos mode, into file named "glycophospholipids_pos.msp", in directory 
+#  Glycophospholipids pos mode, into file named "glycophospholipids_pos.msp", in directory "/Users/SomeUser/calicolipidlibrary_output"
 python2.7 generateDB.py -m "pos" -o "/Users/SomeUser/calicolipidlibrary_output" -n "glycophospholipids_pos.msp" -c "DG, PA, PC, PE, PG, PI, PS, BMP, HexDG, MMPE, DMPE, DG, FAFHFA"
 ```
 
-You may also run the script with no arguments to generate usage information:
+You may also run the script with no arguments to print a usage message.
 ```
 # Print usage information
 python2.7 generateDB.py
@@ -45,7 +44,7 @@ python generateDB.py -m <pos|neg> -o <output-path> -c <lipid-classes>
 	DEFAULT: neg (negative ionization mode)
 -o <output-path>:
 	Supply desired output path.
-	DEFAULT: Use this directory
+	DEFAULT: Current directory
 -n <output-file-name>:
 	Name of output lipids library file.
 	DEFAULT: <date>-Calico-Lipids-<all|<classes>>-<ion>.msp
