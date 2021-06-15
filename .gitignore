@@ -6,3 +6,4 @@ calicolipidlibrary.egg-info/
 calicolipidlibrary/__pycache__/
 calicolipidlibrary/*.pyc
 *.msp
+.DS_Store
