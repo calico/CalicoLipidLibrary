@@ -11,7 +11,11 @@ Scripts to create in silico lipid fragmentation spectra, based on analysis of ch
 
 # Generate A Lipid Library MSP File
 
-This is the primary usage of this package.  Produce an msp file for all desired in the appropriate ionization mode:
+This is the primary usage of this package.  Produce an msp file for all desired in the appropriate ionization mode.
+
+Enumerating all theoretical spectra over all lipid classes may be time-consuming, so the `-c` option may be used
+to generate a subset of the library for a set of classes of interest.
+
 ```
 # all negative mode lipids
 python2.7 generateDB.py -m "neg"
