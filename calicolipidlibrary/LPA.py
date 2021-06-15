@@ -56,5 +56,7 @@ class LPA(LysoGPL):
 
 
 
-x  = LPA("LPA",[[16,0,0],[0,0,0]],  adduct="[M-H]-")
-print x.printNist()
+# x  = LPA("LPA",[[16,0,0],[0,0,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("LPA", [[16,0,0],[0,0,0]], "[M-H]-")

@@ -54,6 +54,7 @@ class DGTS(GPL):
 
 
 
-x  = DGTS("DGTS",[[16,0,0], [16,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = DGTS("DGTS",[[16,0,0], [16,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("DGTS", [[16,0,0], [16,0,0]], "[M+H]+")

@@ -57,9 +57,10 @@ class FAHFA(GPL):
 
 
 
-x  = FAHFA("FAHFA",[[18,0,0], [18,1,0]],  adduct="[M+Na]+")
-print x.printNist()
-
-x  = FAHFA("FAHFA",[[16,0,0], [18,0,0]],  adduct="[M+Na]+")
-print x.printNist()
-
+# x  = FAHFA("FAHFA",[[18,0,0], [18,1,0]],  adduct="[M+Na]+")
+# print x.printNist()
+#
+# x  = FAHFA("FAHFA",[[16,0,0], [18,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("FAHFA", [[18,0,0], [18,1,0]], "[M+Na]+")

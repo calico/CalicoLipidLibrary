@@ -112,8 +112,10 @@ class CL(CardioLipin):
 
 
 
-x  = CL("CL",[[16,0,0], [18,1,0], [16,0,0], [18,1,0]],  adduct="[M-H]-")
-print x.printNist()
-
-x  = CL("CL",[[16,0,0], [18,1,0], [16,0,0], [18,1,0]],  adduct="[M-2H]2-")
-print x.printNist()
+# x  = CL("CL",[[16,0,0], [18,1,0], [16,0,0], [18,1,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# x  = CL("CL",[[16,0,0], [18,1,0], [16,0,0], [18,1,0]],  adduct="[M-2H]2-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("CL", [[16,0,0], [18,1,0], [16,1,0], [18,0,0]], "[M-2H]2-")

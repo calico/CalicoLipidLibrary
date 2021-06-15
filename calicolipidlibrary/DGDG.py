@@ -81,16 +81,17 @@ class DGDG(GPL):
 
 
 
-x  = DGDG("DGDG",[[18,3,0], [16,3,0]],  adduct="[M+NH4]+")
-print x.printNist()
-
-
-
-x  = DGDG("DGDG",[[18,3,0], [16,3,0]],  adduct="[M+Na]+")
-print x.printNist()
-
-
-
-x  = DGDG("DGDG",[[18,3,0], [16,3,0]],  adduct="[M-H]-")
-print x.printNist()
-
+# x  = DGDG("DGDG",[[18,3,0], [16,3,0]],  adduct="[M+NH4]+")
+# print x.printNist()
+#
+#
+#
+# x  = DGDG("DGDG",[[18,3,0], [16,3,0]],  adduct="[M+Na]+")
+# print x.printNist()
+#
+#
+#
+# x  = DGDG("DGDG",[[18,3,0], [16,3,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("DGDG", [[18,3,0], [16,3,0]], "[M+NH4]+")

@@ -113,6 +113,7 @@ class LPE(LysoGPL):
 					else: sys.stdout.write(content)
 			if target: handle.close()
 
-x  = LPE("LPE",[[18,0,0],[0,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = LPE("LPE",[[18,0,0],[0,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("LPE", [[18,0,0],[0,0,0]], "[M+H]+")

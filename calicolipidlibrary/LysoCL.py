@@ -64,6 +64,7 @@ class LysoCL(LysoCardioLipin):
 
 
 
-x  = LysoCL("LysoCL",[[16,0,0], [18,1,0], [18,2,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = LysoCL("LysoCL",[[16,0,0], [18,1,0], [18,2,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("LysoCL", [[16,0,0], [18,1,0], [18,2,0]], "[M+H]+")

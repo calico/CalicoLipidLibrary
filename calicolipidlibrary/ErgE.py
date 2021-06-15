@@ -51,6 +51,7 @@ class ErgE(singleAcyl):
 
 
 
-x  = ErgE("ErgE",[[16,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = ErgE("ErgE",[[16,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("ErgE", [[16,0,0]], "[M+H]+")

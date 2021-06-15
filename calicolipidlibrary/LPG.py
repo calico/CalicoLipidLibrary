@@ -97,7 +97,7 @@ class LPG(LysoGPL):
 
 
 
-x  = LPG("LPG",[[18,1,0],[0,0,0]],  adduct="[M+Na]+")
-print x.printNist()
-
-
+# x  = LPG("LPG",[[18,1,0],[0,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("LPG", [[18,1,0],[0,0,0]], "[M+Na]+")

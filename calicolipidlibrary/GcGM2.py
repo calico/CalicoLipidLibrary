@@ -86,6 +86,7 @@ class GcGM2(SphingoLipid):
 
 
 
-x  = GcGM2("GcGM2",[[18,1,1], [24,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = GcGM2("GcGM2",[[18,1,1], [24,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("GcGM2", [[18,1,1], [24,0,0]], "[M+H]+")

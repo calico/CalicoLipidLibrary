@@ -74,6 +74,7 @@ class LysoCPI(LysoSphingoLipid):
 
 
 
-x  = LysoCPI("LysoCPI",[[18,1,1]],  adduct="[M-H]-")
-print x.printNist()
-
+# x  = LysoCPI("LysoCPI",[[18,1,1]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("LysoCPI", [[18,1,1]], "[M-H]-")

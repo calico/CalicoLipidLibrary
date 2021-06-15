@@ -87,6 +87,7 @@ class LysoCPE(LysoSphingoLipid):
 
 
 
-x  = LysoCPE("LysoCPE",[[18,1,1]],  adduct="[M-H]-")
-print x.printNist()
-
+# x  = LysoCPE("LysoCPE",[[18,1,1]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("LysoCPE", [[18,1,1]], "[M-H]-")

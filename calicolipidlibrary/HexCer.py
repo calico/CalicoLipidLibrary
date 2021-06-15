@@ -130,6 +130,7 @@ class HexCer(SphingoLipid):
 
 
 
-x  = HexCer("HexCer",[[18,1,2], [18,2,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = HexCer("HexCer",[[18,1,2], [18,2,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("HexCer", [[18,1,2], [18,2,0]], "[M+H]+")

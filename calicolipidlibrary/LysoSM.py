@@ -76,11 +76,10 @@ class LysoSM(LysoSphingoLipid):
 
 
 
-x  = LysoSM("LysoSM",[[16,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
-
-
-x  = LysoSM("LysoSM",[[16,0,0]],  adduct="[M+Na]+")
-print x.printNist()
-
+# x  = LysoSM("LysoSM",[[16,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# x  = LysoSM("LysoSM",[[16,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("LysoSM",[[16,0,0]], "[M+Na]+")

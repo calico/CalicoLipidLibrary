@@ -45,6 +45,7 @@ class FA(singleAcyl):
 
 
 
-x  = FA("FA",[[16,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = FA("FA",[[16,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("FA", [[16,0,0]], "[M+H]+")

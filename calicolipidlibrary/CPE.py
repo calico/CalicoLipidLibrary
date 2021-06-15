@@ -89,11 +89,13 @@ class CPE(SphingoLipid):
 
 
 
-x  = CPE("CPE",[[17,1,1], [12,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
-x  = CPE("CPE",[[18,1,1], [24,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
-x  = CPE("CPE",[[18,1,1], [24,1,0]],  adduct="[M+H]+")
-print x.printNist()
+# x  = CPE("CPE",[[17,1,1], [12,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# x  = CPE("CPE",[[18,1,1], [24,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# x  = CPE("CPE",[[18,1,1], [24,1,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("CPE", [[18,1,1], [24,1,0]], "[M+H]+")

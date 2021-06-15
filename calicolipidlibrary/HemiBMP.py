@@ -59,6 +59,7 @@ class HemiBMP(LysoCardioLipin):
 
 
 
-x  = HemiBMP("HemiBMP",[[18,0,0], [22,6,0], [2,0,0]],  adduct="[M-H]-")
-print x.printNist()
-
+# x  = HemiBMP("HemiBMP",[[18,0,0], [22,6,0], [2,0,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("HemiBMP", [[18,0,0], [22,6,0], [2,0,0]], "[M-H]-")

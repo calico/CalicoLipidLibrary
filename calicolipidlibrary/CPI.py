@@ -60,6 +60,7 @@ class CPI(SphingoLipid):
 
 
 
-x  = CPI("CPI",[[18,1,1], [24,0,0]],  adduct="[M-H]-")
-print x.printNist()
-
+# x  = CPI("CPI",[[18,1,1], [24,0,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("CPI", [[18,1,1], [24,0,0]], "[M-H]-")

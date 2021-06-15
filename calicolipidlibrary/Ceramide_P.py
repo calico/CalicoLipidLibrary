@@ -78,9 +78,11 @@ class Ceramide_P(SphingoLipid):
 
 
 
-x  = Ceramide_P("Ceramide_P",[[18,1,1], [12,0,0]],  adduct="[M-H]-")
-print x.printNist()
-
-
-x  = Ceramide_P("Ceramide_P",[[18,1,1], [24,0,0]],  adduct="[M-H]-")
-print x.printNist()
+# x  = Ceramide_P("Ceramide_P",[[18,1,1], [12,0,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+#
+# x  = Ceramide_P("Ceramide_P",[[18,1,1], [24,0,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("Ceramide_P", [[18,1,1], [12,0,0]], "[M-H]-")

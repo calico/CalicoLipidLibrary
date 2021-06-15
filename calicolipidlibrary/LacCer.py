@@ -103,13 +103,14 @@ class LacCer(SphingoLipid):
 
 
 
-x  = LacCer("LacCer",[[18,1,1], [17,0,0]],  adduct="[M+Na]+")
-print x.printNist()
-
-x  = LacCer("LacCer",[[18,1,1], [24,0,0]],  adduct="[M+Na]+")
-print x.printNist()
-
-
-x  = LacCer("LacCer",[[18,1,1], [24,1,0]],  adduct="[M+FA-H]-")
-print x.printNist()
-
+# x  = LacCer("LacCer",[[18,1,1], [17,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
+#
+# x  = LacCer("LacCer",[[18,1,1], [24,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
+#
+#
+# x  = LacCer("LacCer",[[18,1,1], [24,1,0]],  adduct="[M+FA-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("LacCer", [[18,1,1], [24,1,0]], "[M+FA-H]-")

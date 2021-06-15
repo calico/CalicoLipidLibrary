@@ -59,6 +59,7 @@ class LCB_P(LysoSphingoLipid):
 
 
 
-x  = LCB_P("LCB_P",[[20,1,1]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = LCB_P("LCB_P",[[20,1,1]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("LCB_P", [[20,1,1]], "[M+H]+")

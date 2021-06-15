@@ -42,6 +42,7 @@ class Ethanolamine(singleAcyl):
 
 
 
-x  = Ethanolamine("Ethanolamine",[[16,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = Ethanolamine("Ethanolamine",[[16,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("Ethanolamine", [[16,0,0]], "[M+H]+")

@@ -106,6 +106,7 @@ class LPS(LysoGPL):
 
 
 
-x  = LPS("LPS",[[18,1,0],[0,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = LPS("LPS",[[18,1,0],[0,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("LPS", [[18,1,0],[0,0,0]], "[M+H]+")

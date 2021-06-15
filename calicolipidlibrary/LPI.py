@@ -113,8 +113,9 @@ class LPI(LysoGPL):
 
 
 
-x  = LPI("LPI",[[16,0,0],[0,0,0]],  adduct="[M+Na]+")
-print x.printNist()
-x  = LPI("LPI",[[20,4,0],[0,0,0]],  adduct="[M-H]-")
-print x.printNist()
-
+# x  = LPI("LPI",[[16,0,0],[0,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
+# x  = LPI("LPI",[[20,4,0],[0,0,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("LPI", [[16,0,0],[0,0,0]], "[M+Na]+")

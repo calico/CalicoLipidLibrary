@@ -86,6 +86,7 @@ class DMPE(GPL):
 
 
 
-x  = DMPE("DMPE",[[16,0,0], [16,1,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = DMPE("DMPE",[[16,0,0], [16,1,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("DMPE", [[16,0,0], [16,1,0]], "[M+H]+")

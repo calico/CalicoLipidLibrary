@@ -51,12 +51,13 @@ class LCB(LysoSphingoLipid):
 
 
 
-x  = LCB("LCB",[[18,1,1]],  adduct="[M+H]+")
-print x.printNist()
-
-x  = LCB("LCB",[[18,0,1]],  adduct="[M+H]+")
-print x.printNist()
-
-x  = LCB("LCB",[[20,0,1]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = LCB("LCB",[[18,1,1]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# x  = LCB("LCB",[[18,0,1]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# x  = LCB("LCB",[[20,0,1]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("LCB", [[18,1,1]], "[M+H]+")

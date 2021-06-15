@@ -66,7 +66,8 @@ class MGDG(GPL):
 
 
 
-x  = MGDG("MGDG",[[18,3,0], [16,3,0]],  adduct="[M+NH4]+")
-print x.printNist()
-
+# x  = MGDG("MGDG",[[18,3,0], [16,3,0]],  adduct="[M+NH4]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("MGDG", [[18,3,0], [16,3,0]], "[M+NH4]+")
 

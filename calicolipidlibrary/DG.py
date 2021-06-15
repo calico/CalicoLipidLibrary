@@ -52,5 +52,7 @@ class DG(GPL):
 
 
 
-x  = DG("DG",[[16,0,0], [20,1,0]],  adduct="[M+NH4]+")
-print x.printNist()
+# x  = DG("DG",[[16,0,0], [20,1,0]],  adduct="[M+NH4]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("DG", [[16,0,0], [20,1,0]], "[M+NH4]+")

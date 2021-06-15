@@ -93,8 +93,10 @@ class LPC(LysoGPL):
 
 
 
-x  = LPC("LPC",[[18,0,0],[0,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
-x  = LPC("LPC",[[18,0,0],[0,0,0]],  adduct="[M+Na]+")
-print x.printNist()
+# x  = LPC("LPC",[[18,0,0],[0,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# x  = LPC("LPC",[[18,0,0],[0,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("LPC", [[18,0,0],[0,0,0]], "[M+Na]+")

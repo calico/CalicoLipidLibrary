@@ -76,8 +76,10 @@ class MG(MAG):
 
 
 
-x  = MG("MG",[[14,0,0]],  adduct="[M-H]-")
-print x.printNist()
-
-x  = MG("MG",[[16,0,0]],  adduct="[M-H]-")
-print x.printNist()
+# x  = MG("MG",[[14,0,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# x  = MG("MG",[[16,0,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("MG", [[14,0,0]], "[M-H]-")

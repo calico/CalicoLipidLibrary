@@ -82,6 +82,7 @@ class GcGM3(SphingoLipid):
 
 
 
-x  = GcGM3("GcGM3",[[18,1,1], [24,1,0]],  adduct="[M-H]-")
-print x.printNist()
-
+# x  = GcGM3("GcGM3",[[18,1,1], [24,1,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("GcGM3", [[18,1,1], [24,1,0]], "[M-H]-")

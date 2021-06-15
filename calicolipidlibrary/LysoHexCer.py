@@ -44,6 +44,7 @@ class LysoHexCer(LysoSphingoLipid):   #e.g. psychosine
 
 
 
-x  = LysoHexCer("LysoHexCer",[[16,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
+# x  = LysoHexCer("LysoHexCer",[[16,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+# calicolipidlibrary.print_spectrum("LysoHexCer", [[16,0,0]], "[M+H]+")
