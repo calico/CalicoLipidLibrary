@@ -52,6 +52,70 @@ NEG_ADDUCTS = {"[M-H]-", "[M+Cl]-","[M+37Cl]-", "[M+FA-H]-", "[M-CH3]-", "[M+AcO
 ALL_ADDUCTS = POS_ADDUCTS.copy()
 ALL_ADDUCTS |= NEG_ADDUCTS.copy()
 
+ALL_LIPID_CLASSES = {
+    "AcGM2",
+    "AcGM3",
+    "Alkyl_LPC",
+    "Alkyl_LPE",
+    "Alkyl_LPS",                # 5
+    "Alkyl_PC",
+    "Alkyl_PE",
+    "Alkyl_PS",
+    "BDP",
+    "BMP",                      # 10
+    "Carn",
+    "CDP_DG",
+    "CE",
+    "Ceramide",
+    "Ceramide_P",               # 15
+    "CL",
+    "CPE",
+    "CPI",
+    "DG",
+    "DGDG",                     # 20
+    "DGTS",
+    "DMPE",
+    "ErgE",
+    "Ethanolamine",
+    "FA",                       # 25
+    "FAHFA",
+    "GcGM2",
+    "GcGM3",
+    "HemiBMP",
+    "HexCer",                   # 30
+    "LacCer",
+    "LCB_P",
+    "LCB",
+    "LPA",
+    "LPC",                      # 35
+    "LPE",
+    "LPG",
+    "LPI",
+    "LPS",
+    "LysoCL",                   # 40
+    "LysoCPE",
+    "LysoCPI",
+    "LysoHexCer",
+    "LysoSM",
+    "MG",                       # 45
+    "MGDG",
+    "MIP2C",
+    "MIPC",
+    "MMPE",
+    "N_Acyl_PE",                # 50
+    "N_Acyl_PS",
+    "PA",
+    "PC",
+    "PE",
+    "PG",                       # 55
+    "PI",
+    "PS",
+    "SM",
+    "Sulfatide",
+    "Taurine",                  # 60
+    "TG",
+}
+
 def MW(form):  # calc MW from string that is chemical formula
 	parsed = re.findall(r'([A-Z][a-z]*)(\d*)', form)
 	weight = 0.00;
