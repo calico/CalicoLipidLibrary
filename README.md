@@ -13,8 +13,109 @@ Scripts to create in silico lipid fragmentation spectra, based on analysis of ch
 
 This is the primary usage of this package.  Produce an msp file for all desired/classes and adducts, like so:
 
-`TODO`
+```
+# all negative mode lipids
+python2.7 generateDB.py -m "neg"
 
+# PC in positive mode
+python2.7 generateDB.py -m "pos" -c "PC"
+
+# PC, PE, PS in positive mode. ImaginaryClass is silently removed
+python2.7 generateDB.py -m "pos" -c "PC,PE,ImaginaryClass,PS"
+
+# Sphingolipids neg mode, into file named 'neg_sphingolipids.msp'
+python2.7 generateDB.py -m "neg" -c "AcGM2, AcGM3, GcGM2, GcGM3, MIP2C, MIPC, HexCer, LacCer, Sulfatide, SM, Ceramide, Ceramide_P" -n "neg_sphingolipids"
+
+#  Glycophospholipids pos mode, into file named "glycophospholipids_pos.msp", in directory 
+python2.7 generateDB.py -m "pos" -o "/Users/SomeUser/calicolipidlibrary_output" -n "glycophospholipids_pos.msp" -c "DG, PA, PC, PE, PG, PI, PS, BMP, HexDG, MMPE, DMPE, DG, FAFHFA"
+```
+
+You may also run the script with no arguments to generate usage information:
+```
+# Print usage information
+python2.7 generateDB.py
+```
+```
+Usage:
+
+python generateDB.py -m <pos|neg> -o <output-path> -c <lipid-classes>
+
+-m <pos|neg>:
+	enumerate positive or negative mode spectra.
+	DEFAULT: neg (negative ionization mode)
+-o <output-path>:
+	Supply desired output path.
+	DEFAULT: Use this directory
+-n <output-file-name>:
+	Name of output lipids library file.
+	DEFAULT: <date>-Calico-Lipids-<all|<classes>>-<ion>.msp
+-c <lipid-classes>:
+	Supply desired lipid classes, in a comma-delimited string (e.g., 'PS,PC,PE'
+	DEFAULT: all available lipid classes.
+
+AVAILABLE LIPID CLASSES:
+CPI
+DGTS
+DG
+MMPE
+Taurine
+CPE
+Sulfatide
+GcGM3
+FA
+LysoCL
+MGDG
+AcGM3
+AcGM2
+PS
+LacCer
+N_Acyl_PE
+PC
+MIP2C
+LysoHexCer
+ErgE
+BMP
+N_Acyl_PS
+Carn
+PG
+MIPC
+DMPE
+TG
+PI
+FAHFA
+CDP_DG
+Ceramide_P
+LysoSM
+CL
+LCB_P
+PA
+PE
+LPS
+CE
+BDP
+LPI
+LPG
+LPE
+Ethanolamine
+LPC
+Ceramide
+LPA
+MG
+Alkyl_PC
+LysoCPI
+Alkyl_PE
+GcGM2
+LysoCPE
+DGDG
+Alkyl_LPS
+HemiBMP
+Alkyl_PS
+LCB
+SM
+Alkyl_LPE
+HexCer
+Alkyl_LPC
+```
 # Print Single Spectrum
 
 Running python in an interactive shell, you may also print the theoretical MS/MS spectrum of a single lipid class+adduct:
@@ -90,7 +191,8 @@ calicolipidlibrary.print_spectrum("",,"")
 calicolipidlibrary.print_spectrum("",,"")
 calicolipidlibrary.print_spectrum("",,"")
 calicolipidlibrary.print_spectrum("",,"")
-calicolipidlibrary.print_spectrum("",,"")
+
+calicolipidlibrary.print_spectrum("MIPC",[[18,0,2], [26,0,0]],  adduct="[M-H]-")
 
 calicolipidlibrary.print_spectrum("MMPE",[[16,1,0], [16,1,0]], "[M+H]+")
 calicolipidlibrary.print_spectrum("N_Acyl_PE",[[16,1,0], [18,2,0], [20,2,0]], "[M+H]+")
