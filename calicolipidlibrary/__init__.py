@@ -24,6 +24,7 @@ from ErgE import *
 from Ethanolamine import *
 from FA import *
 from FAHFA import *
+from GB3 import *
 from GcGM2 import *
 from GcGM3 import *
 from HemiBMP import *

@@ -6,6 +6,7 @@ from Alkyl_LPS import *
 from Alkyl_PC import *
 from Alkyl_PE import *
 from Alkyl_PS import *
+from GB3 import *
 from BDP import *
 from BMP import *
 from Carn import *

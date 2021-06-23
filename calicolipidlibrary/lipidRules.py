@@ -79,40 +79,41 @@ ALL_LIPID_CLASSES = {
     "Ethanolamine",
     "FA",                       # 25
     "FAHFA",
+	"GB3",
     "GcGM2",
     "GcGM3",
-    "HemiBMP",
-    "HexCer",                   # 30
+    "HemiBMP",					# 30
+    "HexCer",
     "LacCer",
     "LCB_P",
     "LCB",
-    "LPA",
-    "LPC",                      # 35
+    "LPA",                      # 35
+    "LPC",
     "LPE",
     "LPG",
     "LPI",
-    "LPS",
-    "LysoCL",                   # 40
+    "LPS",                   	# 40
+    "LysoCL",
     "LysoCPE",
     "LysoCPI",
     "LysoHexCer",
-    "LysoSM",
-    "MG",                       # 45
+    "LysoSM",                   # 45
+    "MG",
     "MGDG",
     "MIP2C",
     "MIPC",
-    "MMPE",
-    "N_Acyl_PE",                # 50
+    "MMPE",                		# 50
+    "N_Acyl_PE",
     "N_Acyl_PS",
     "PA",
     "PC",
-    "PE",
-    "PG",                       # 55
+    "PE",                       # 55
+    "PG",
     "PI",
     "PS",
     "SM",
-    "Sulfatide",
-    "Taurine",                  # 60
+    "Sulfatide",                # 60
+    "Taurine",
     "TG",
 }
 

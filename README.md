@@ -57,6 +57,7 @@ python generateDB.py -m <pos|neg> -o <output-path> -c <lipid-classes>
 	DEFAULT: all available lipid classes.
 
 AVAILABLE LIPID CLASSES:
+GB3
 CPI
 DGTS
 DG
@@ -188,6 +189,7 @@ calicolipidlibrary.print_spectrum("ErgE", [[16,0,0]], "[M+H]+")
 calicolipidlibrary.print_spectrum("Ethanolamine", [[16,0,0]], "[M+H]+")
 calicolipidlibrary.print_spectrum("FA", [[16,0,0]], "[M+H]+")
 calicolipidlibrary.print_spectrum("FAHFA", [[18,0,0], [18,1,0]], "[M+Na]+")
+calicolipidlibrary.print_spectrum("GB3",[[18,1,1], [16,0,0]], "[M+H]+")
 calicolipidlibrary.print_spectrum("GcGM2", [[18,1,1], [24,0,0]], "[M+H]+")
 calicolipidlibrary.print_spectrum("GcGM3", [[18,1,1], [24,1,0]], "[M-H]-")
 calicolipidlibrary.print_spectrum("HemiBMP", [[18,0,0], [22,6,0], [2,0,0]], "[M-H]-")
