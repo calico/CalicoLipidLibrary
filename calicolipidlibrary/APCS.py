@@ -70,6 +70,6 @@ class APCS(singleAcyl):
 
 
 
-x  = APCS("APCS",[[16,0,0]],  adduct="[M+Na]+")
-print x.printNist()
+# x  = APCS("APCS",[[16,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
 
