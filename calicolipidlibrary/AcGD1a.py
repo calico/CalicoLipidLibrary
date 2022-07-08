@@ -29,7 +29,6 @@ class AcGD1a(SphingoLipid):
 					FRAGMENTS.append( [PREC- 2*MW("C11H19NO9")-MW("C8H15NO6")-2*MW("C6H12O6")+4*H2O, 32, "NL 2x deoxy-N-Ac-Neuraminic Acid + 2x deoxyGalactose + N-Ac-Galactosamine"] )
 					FRAGMENTS.append( [PREC- 2*MW("C11H19NO9")-MW("C8H15NO6")-3*MW("C6H12O6")+4*H2O, 18, "Ceramide - 2xwater"] )
 					FRAGMENTS.append( [PREC- 2*MW("C11H19NO9")-MW("C8H15NO6")-3*MW("C6H12O6")+5*H2O, 94, "Ceramide - water"] )
-					#FRAGMENTS.append( [PREC- 2*MW("C11H19NO9")-MW("C8H15NO6")-3*MW("C6H12O6")+6*H2O, 3, "Ceramide"] )
 					FRAGMENTS.append( [PREC- 2*MW("C11H19NO9")-MW("C8H15NO6")-3*MW("C6H12O6")+5*H2O - NL(self.chains[1])+H2O, 21, "sphingoid base "] )
 					FRAGMENTS.append( [PREC- 2*MW("C11H19NO9")-MW("C8H15NO6")-3*MW("C6H12O6")+5*H2O - NL(self.chains[1]), 203, "sphingoid base - water"] )
 					FRAGMENTS.append( [PREC- 2*MW("C11H19NO9")-MW("C8H15NO6")-3*MW("C6H12O6")+5*H2O - NL(self.chains[1])+H2O-MW("CH2O"), 17, "sphingoid base - CH2O"] )
@@ -39,7 +38,6 @@ class AcGD1a(SphingoLipid):
 					FRAGMENTS.append([MW("C11H19NO9") - 2 * H2O + PROTON, 1000, "deoxy-N-Ac-Neuraminic Acid - water "])
 					FRAGMENTS.append([MW("C11H19NO9") - 3 * H2O + PROTON, 74, "deoxy-N-Ac-Neuraminic Acid - 2 water "])
 
-					#FRAGMENTS.append( [NL(self.chains[1])-H2O+MW("NH3")+PROTON, 6, "sn2 fatty amide"])
 					FRAGMENTS.append([MW("C8H15NO6") - H2O + PROTON, 527, "N-Ac-glucosamine - water"])
 					FRAGMENTS.append([MW("C6H12O6") + MW("C11H19NO9") - 2*H2O + PROTON, 38, "deoxygalactose + deoxy-N-Ac-Neuraminic Acid"])
 					FRAGMENTS.append([MW("C6H12O6") + MW("C8H15NO6") + MW("C11H19NO9") - 3*H2O + PROTON, 243, "deoxy-N-Ac-galcatosamine + deoxygalactose + dexoy-N-Ac-Neuraminic Acid"])
@@ -50,8 +48,6 @@ class AcGD1a(SphingoLipid):
 
 					FRAGMENTS.append([PREC, 2, "precursor"])
 
-					#FRAGMENTS.append([SINGLE - MW("C11H19NO9"), 12, "NL N-Ac-Neuraminic Acid"])
-					#FRAGMENTS.append([SINGLE - 2 * MW("C11H19NO9") + H2O, 1, "NL N-Ac-Neuraminic Acid + deoxy-N-acetyl-Neuraminic Acid"])
 					FRAGMENTS.append([SINGLE - MW("C11H19NO9") - MW("C6H12O6") + H2O, 14, "NL deoxy-N-Ac-Neuraminic Acid + Galactose + water "])
 					FRAGMENTS.append([SINGLE - 2 * MW("C11H19NO9") - MW("C6H12O6") + 2 * H2O, 33, "NL 2x deoxy-N-Ac-Neuraminic Acid + Galactose "])
 					FRAGMENTS.append([SINGLE - MW("C11H19NO9") - MW("C8H15NO6") - MW("C6H12O6") + 2 * H2O, 34, "NL deoxy-N-Ac-Neuraminic Acid + deoxyGalactose + N-Ac-Galactosamine "])
@@ -60,17 +56,14 @@ class AcGD1a(SphingoLipid):
 					FRAGMENTS.append([SINGLE - 2 * MW("C11H19NO9") - MW("C8H15NO6") - 2 * MW("C6H12O6") + 4 * H2O, 100, "NL 2x deoxy-N-Ac-Neuraminic Acid + 2x deoxyGalactose + N-Ac-Galactosamine"])
 					FRAGMENTS.append([SINGLE - 2 * MW("C11H19NO9") - MW("C8H15NO6") - 3 * MW("C6H12O6") + 4 * H2O, 50, "Ceramide - 2xwater"])
 					FRAGMENTS.append([SINGLE - 2 * MW("C11H19NO9") - MW("C8H15NO6") - 3 * MW("C6H12O6") + 5 * H2O, 317, "Ceramide - water"])
-					#FRAGMENTS.append( [SINGLE- 2*MW("C11H19NO9")-MW("C8H15NO6")-3*MW("C6H12O6")+6*H2O, 3, "Ceramide"] )
 					FRAGMENTS.append([SINGLE - 2 * MW("C11H19NO9") - MW("C8H15NO6") - 3 * MW("C6H12O6") + 5 * H2O - NL(self.chains[1]) + H2O, 57, "sphingoid base "])
 					FRAGMENTS.append([SINGLE - 2 * MW("C11H19NO9") - MW("C8H15NO6") - 3 * MW("C6H12O6") + 5 * H2O - NL(self.chains[1]), 945, "sphingoid base - water"])
 					FRAGMENTS.append([SINGLE - 2 * MW("C11H19NO9") - MW("C8H15NO6") - 3 * MW("C6H12O6") + 5 * H2O - NL(self.chains[1]) + H2O - MW("CH2O"), 45, "sphingoid base - CH2O"])
 
-					#FRAGMENTS.append([MW("C11H19NO9") + PROTON, 10, "N-Ac-Neuraminic Acid"])
 					FRAGMENTS.append([MW("C11H19NO9") - H2O + PROTON, 318, "deoxy-N-Ac-Neuraminic Acid"])
 					FRAGMENTS.append([MW("C11H19NO9") - 2 * H2O + PROTON, 1000, "deoxy-N-Ac-Neuraminic Acid - water "])
 					FRAGMENTS.append([MW("C11H19NO9") - 3 * H2O + PROTON, 39, "deoxy-N-Ac-Neuraminic Acid - 2 water "])
 
-					#FRAGMENTS.append( [NL(self.chains[1])-H2O+MW("NH3")+PROTON, 6, "sn2 fatty amide"])
 					FRAGMENTS.append([MW("C8H15NO6") - H2O + PROTON, 190, "N-Ac-glucosamine - water"])
 					FRAGMENTS.append([MW("C6H12O6") + MW("C11H19NO9") - 2 * H2O + PROTON, 2, "deoxygalactose + deoxy-N-Ac-Neuraminic Acid"])
 					FRAGMENTS.append([MW("C6H12O6") + MW("C8H15NO6") + MW("C11H19NO9") - 3 * H2O + PROTON, 36, "deoxy-N-Ac-galcatosamine + deoxygalactose + dexoy-N-Ac-Neuraminic Acid"])
@@ -100,12 +93,8 @@ class AcGD1a(SphingoLipid):
 									  "Ceramide + adduct"])
 
 
-					#FRAGMENTS.append([PREC - 2 * MW("C11H19NO9") - MW("C8H15NO6") - 3 * MW("C6H12O6") + 5 * H2O - NL(self.chains[1]) + H2O - ADDUCT[adduct] + PROTON, 12,
-					#				  "sphingoid base - adduct "])
 					FRAGMENTS.append([PREC - 2 * MW("C11H19NO9") - MW("C8H15NO6") - 3 * MW("C6H12O6") + 5 * H2O - NL(self.chains[1]) - ADDUCT[adduct] + PROTON, 2,
 									  "sphingoid base - water - ADDUCT"])
-					#FRAGMENTS.append([PREC - 2 * MW("C11H19NO9") - MW("C8H15NO6") - 3 * MW("C6H12O6") + 5 * H2O - NL(self.chains[1]) + H2O - MW("CH2O") - ADDUCT[adduct] + PROTON, 9,
-					#				  "sphingoid base - CH2O - ADDCUT"])
 
 					FRAGMENTS.append([MW("C11H19NO9") + PROTON, 7, "N-Ac-Neuraminic Acid"])
 					FRAGMENTS.append([MW("C11H19NO9") - H2O + PROTON, 5, "deoxy-N-Ac-Neuraminic Acid"])
@@ -132,16 +121,11 @@ class AcGD1a(SphingoLipid):
 					FRAGMENTS.append( [PREC-ADDUCT[adduct]-PROTON, 1000, "NL adduct"] )
 				if adduct == "[M-H]-":
 					FRAGMENTS.append([PREC, 15, "precursor"])
-					#FRAGMENTS.append( [PREC - H2O, 5, "NL water"] )
 					FRAGMENTS.append( [PREC - MW("CO2"), 7, "NL CO2"] )
 					FRAGMENTS.append( [MW("C11H19NO9")-PROTON, 3, "N-Ac-Neuraminic Acid"] )
 					FRAGMENTS.append( [PREC-MW("C11H19NO9")+H2O, 1000, "NL  deoxy-N-Ac-Neuraminic Acid"] )
-					#FRAGMENTS.append( [PREC-MW("C11H19NO9")-MW("CO2")+H2O, 4, "NL deoxy-N-Ac-Neuraminic Acid + CO2"] )
 					FRAGMENTS.append( [PREC-2*MW("C11H19NO9")+2*H2O, 3, "NL 2x deoxy-N-Ac-Neuraminic Acid"] )
-
-					#FRAGMENTS.append( [PREC-MW("C11H19NO9"), 5, "NL N-Ac-Neuraminic Acid"] )
 					FRAGMENTS.append( [ NL(self.chains[1]) - H2O + MW("C2H7NO") - H2O - PROTON, 259, "N-acyl-ethanolamine - H2O - H"])
-					#FRAGMENTS.append( [ NL(self.chains[1]) - H2O - PROTON, 2, "Fatty Amide - NH3 - H"])
 					FRAGMENTS.append([PREC - 2 * MW("C11H19NO9") - MW("C8H15NO6") - 3 * MW("C6H10O5") + 3 * H2O, 10, "Ceramide"])
 					FRAGMENTS.append([PREC - 2 * MW("C11H19NO9") - MW("C8H15NO6") - 2 * MW("C6H10O5") + 2 * H2O, 2, "Glucosyl ceramide - water"])
 					FRAGMENTS.append([PREC - 2 * MW("C11H19NO9") - MW("C8H15NO6") - 2 * MW("C6H10O5") + 3* H2O, 9, "Glucosyl ceramide"])
@@ -187,14 +171,14 @@ class AcGD1a(SphingoLipid):
 
 
 
-x  = AcGD1a("AcGD1a",[[18,1,1], [18,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
-
-
-x  = AcGD1a("AcGD1a",[[18,1,1], [18,0,0]],  adduct="[M+2H]2+")
-print x.printNist()
-
-
-x  = AcGD1a("AcGD1a",[[18,1,1], [18,0,0]],  adduct="[M+Na]+")
-print x.printNist()
+# x  = AcGD1a("AcGD1a",[[18,1,1], [18,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+#
+#
+# x  = AcGD1a("AcGD1a",[[18,1,1], [18,0,0]],  adduct="[M+2H]2+")
+# print x.printNist()
+#
+#
+# x  = AcGD1a("AcGD1a",[[18,1,1], [18,0,0]],  adduct="[M+Na]+")
+# print x.printNist()

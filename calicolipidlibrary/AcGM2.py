@@ -40,21 +40,6 @@ class AcGM2(SphingoLipid):
 					FRAGMENTS.append([MW("C8H15NO6") + PROTON, 19, "N-Ac-glucosamine "])
 					FRAGMENTS.append([MW("C8H15NO6") - H2O + PROTON, 1000, "N-Ac-glucosamine - water"])
 					FRAGMENTS.append([MW("C8H15NO6") - 2 * H2O + PROTON, 461, "N-Ac-glucosamine - 2*water"])
-
-
-
-
-			# if adduct == "[M+Na]+" or adduct == "[M+K]+":
-			# 		FRAGMENTS.append( [PREC - MW("CO2"), 1000, "Precursor - CO2"] )
-			# 		#FRAGMENTS.append( [MW("C11H19NO10")+ADDUCT[adduct], 1000, "pre - N-Ac-Neuraminic Acid"] )
-			# 		FRAGMENTS.append( [PREC-MW("C11H19NO9")+H2O, 1000, "pre - N-Ac-Neuraminic Acid"] )
-			# 		FRAGMENTS.append( [PREC-MW("C11H19NO9")-MW("C8H15NO6")+2*H2O, 1000, "pre - N-Ac-Neuraminic Acid - N-Ac-Glucosamine"] )
-			# 		FRAGMENTS.append( [PREC-MW("C11H19NO9")-MW("C8H15NO6")-MW("C6H10O5")+2*H2O, 1000, "pre - N-Ac-Neuraminic Acid - N-Ac-Glucosamine - glucose"] )
-			# 		FRAGMENTS.append( [PREC-MW("C11H19NO9")-MW("C8H15NO6")-2*MW("C6H10O5")+2*H2O, 1000, "pre - N-Ac-Neuraminic Acid - N-Ac-Glucosamine - glucose - galactose"] )
-			# 		FRAGMENTS.append( [PREC-MW("C11H19NO9")-MW("C8H15NO6")-2*MW("C6H10O5")+H2O, 1000, "pre - N-Ac-Neuraminic Acid - N-Ac-Glucosamine - glucose - galactose - water"] )
-			# 		FRAGMENTS.append( [PREC - MW("C11H19NO9")-2*MW("C6H10O5")-NL(self.chains[1])+H2O, 1000, "pre- (head + sn2)"])
-			# 		#FRAGMENTS.append( [NL(self.chains[1])-H2O+PROTON, 1000, "sn2 acylium ion"])
-			# 		#FRAGMENTS.append( [NL(self.chains[1])-H2O-H2O+PROTON, 1000, "sn2 acylium ion - H2O"])
 	
 			
 			elif adduct in NEG_ADDUCTS:  
