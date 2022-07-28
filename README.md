@@ -9,6 +9,8 @@ Scripts to create in silico lipid fragmentation spectra, based on analysis of ch
 
 3. `python setup.py sdist bdist_wheel`
 
+Optional: use (pypy)[https://www.pypy.org/] for significantly faster speed.
+
 # Run Tests
 
 1. `pip install pytest`
