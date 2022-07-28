@@ -13,7 +13,7 @@ Scripts to create in silico lipid fragmentation spectra, based on analysis of ch
 
 1. `pip install pytest`
 
-2. `pytest test.py`
+2. `pytest tests`
 
 # Generate A Lipid Library MSP File
 
