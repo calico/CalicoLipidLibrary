@@ -9,6 +9,14 @@ Scripts to create in silico lipid fragmentation spectra, based on analysis of ch
 
 3. `python setup.py sdist bdist_wheel`
 
+Optional: use (pypy)[https://www.pypy.org/] for significantly faster speed.
+
+# Run Tests
+
+1. `pip install pytest`
+
+2. `pytest tests`
+
 # Generate A Lipid Library MSP File
 
 This is the primary usage of this package.  Produce an msp file for all desired in the appropriate ionization mode.
