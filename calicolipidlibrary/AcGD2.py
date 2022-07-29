@@ -152,6 +152,6 @@ class AcGD2(SphingoLipid):
 
 
 
-x  = AcGD2("AcGD2",[[18,1,1], [18,0,0]],  adduct="[M+Na]+")
-print x.printNist()
+# x  = AcGD2("AcGD2",[[18,1,1], [18,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
 

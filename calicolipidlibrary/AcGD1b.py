@@ -185,9 +185,9 @@ class AcGD1b(SphingoLipid):
 
 
 
-x  = AcGD1b("AcGD1b",[[18,1,1], [18,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
-
-x  = AcGD1b("AcGD1b",[[18,1,1], [18,0,0]],  adduct="[M+Na]+")
-print x.printNist()
+# x  = AcGD1b("AcGD1b",[[18,1,1], [18,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+#
+# x  = AcGD1b("AcGD1b",[[18,1,1], [18,0,0]],  adduct="[M+Na]+")
+# print x.printNist()

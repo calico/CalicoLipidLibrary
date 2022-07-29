@@ -85,9 +85,9 @@ class AcGM1(SphingoLipid):
 
 
 
-x  = AcGM1("AcGM1",[[18,1,1], [18,0,0]],  adduct="[M-H]-")
-print x.printNist()
-
-
-x  = AcGM1("AcGM1",[[18,1,1], [18,0,0]],  adduct="[M+H]+")
-print x.printNist()
+# x  = AcGM1("AcGM1",[[18,1,1], [18,0,0]],  adduct="[M-H]-")
+# print x.printNist()
+#
+#
+# x  = AcGM1("AcGM1",[[18,1,1], [18,0,0]],  adduct="[M+H]+")
+# print x.printNist()

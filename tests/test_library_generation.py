@@ -24,14 +24,23 @@ def checksum_for_generated_library(lipid_cls, ion):
     os.unlink(f.name)  # delete the file
     return csum
 
-test_params = [(AcGM2,         "ea411225fdcfc944932266c142443710", "0f72e21f828f93b0ac1bb9ceba9865f2"),
+
+test_params = [(AcGD1a,        "fc8ebe9001dcf1056e93015d8270a6b6", "06c624e96cbf05971111c3be6a460c6a"),
+               (AcGD1b,        "343937f9080d05d1974b3e697674dac0", "7c6e77434b56eb441a479e1a1dbbdd30"),
+               (AcGD2,         "1c8578a37d41985f7d9e1e304abe4f8a", "c3b798eda950260e7edacbba2aecba3a"),
+               (AcGD3,         "60924d18ccb5a386f2a2028871a578c5", "74b2fc5aa05ca1f0c2224324f0b6eb5f"),
+               (AcGM1,         "8b919e6c5f34ca982971792b15aa8cf1", "c45c914368f6becdf6af2a80422ddf97"),
+               (AcGM2,         "ea411225fdcfc944932266c142443710", "0f72e21f828f93b0ac1bb9ceba9865f2"),
                (AcGM3,         "8178e54d2ee356d7c17a1eacda122835", "57f7bd38ec39732681216b2aebdbbccc"),
+               (AcGQ1b,        "78da4a0c4b95097916e4fa5a53284a38", "3349055c0ffcdcf49764218b61eae091"),
+               (AcGT1b,        "428559f8e587b8bd964b63a4ede9a49c", "8bd31dcee37bfc0d48d455a06431563d"),
                (Alkyl_LPC,     "38fa54a34da19d9505e041379056a9b6", "4edda981da32bd3950ab7bc0bd7f2864"),
                (Alkyl_LPE,     "a576f9fe68ad2abd2f6e8621a39e62a7", "a07f86b35d7679ecc2482b2cc8c0b5f9"),
                (Alkyl_LPS,     "c96a3a1a59dbfe36ae88b4a87895af53", "7e8562de40b11cf4a3e1bdb1a8144eee"),
                (Alkyl_PC,      "4bc6a0b3a5dcdb025b81fad96db4c501", "b90f66dd169c469b8930ca1bfd761c82"),
                (Alkyl_PE,      "a84b83dafed85324a7dced10f0b3b667", "c7085349a6398493c6cf5332b83a179b"),
                (Alkyl_PS,      "22aab1538df291b1e0296a0b6fc2181c", "af897221d1952d72be5651fbf1fa7457"),
+               (APCS,          "2a302e5a510f4258fa9832f3dc6c5c58", "e79bc0202960d921181c5622dfa840dd"),
                (BDP,           "f485fe58e198388d167cd0c9aecea5dd", "6d4358098013f6665bb90c5e99e12076"),
                (BMP,           "2a17651f16575da65f4b5c3dac0a6ac4", "1c1234f91884035c24705e4ff821a477"),
                (Carn,          "c7814cd5d1f354354a8047f6daf8550f", "bd144d4e286056405e5488e3ad308e24"),
