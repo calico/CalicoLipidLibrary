@@ -421,7 +421,7 @@ class Lipid:
 
 	#lipidclass is one of the above listed lipid backbones
 	#chains is a list of lists, where each member list is [#carbons, #double bond, #hydroxyls] for one carbon chain in the lipid
-	def __init__(self, lipidclass, chains=[], adduct=""): 
+	def set_chains_and_adduct(self, lipidclass, chains=[], adduct=""):
 	
 		self.lipidclass = lipidclass
 		self.chains   = chains
@@ -697,6 +697,22 @@ class Lipid:
 		FRAGMENTS = []
 		#FRAGMENTS.append( [PREC, 1000, "pre"] )
 		return FRAGMENTS
+
+	def generateLibrary(self,target=None, mode="pos"):
+		if target: handle = open(target, 'a+')
+		if mode == "pos":
+			adduct_set = self.pos_adduct_set
+		elif mode =="neg":
+			adduct_set = self.neg_adduct_set
+		# parent = self.__bases__[0]
+		class_name = self.__class__.__name__
+		for c in self.chain_sets:
+			for adduct in adduct_set:
+				self.set_chains_and_adduct(class_name, c, adduct=adduct)
+				content = self.printNist()
+				if target: handle.write(content)
+				else: sys.stdout.write(content)
+		if target: handle.close()
 
 
 #DG, PA, PC, PE, PG, PI, PS, BMP, HexDG, MMPE, DMPE, DG, FAFHFA
