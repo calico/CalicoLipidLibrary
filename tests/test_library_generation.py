@@ -24,11 +24,7 @@ def checksum_for_generated_library(lipid_cls, ion):
     os.unlink(f.name)  # delete the file
     return csum
 
-test_params = [(MIP2C,         "143edab66a6f3f9d05acdf3b411d72bc", "8f23c164cf2bc31279e8dbcd31e85077"),
-               ]
-
-
-test_params2 = [(AcGM2,         "ea411225fdcfc944932266c142443710", "0f72e21f828f93b0ac1bb9ceba9865f2"),
+test_params = [(AcGM2,         "ea411225fdcfc944932266c142443710", "0f72e21f828f93b0ac1bb9ceba9865f2"),
                (AcGM3,         "8178e54d2ee356d7c17a1eacda122835", "57f7bd38ec39732681216b2aebdbbccc"),
                (Alkyl_LPC,     "38fa54a34da19d9505e041379056a9b6", "4edda981da32bd3950ab7bc0bd7f2864"),
                (Alkyl_LPE,     "a576f9fe68ad2abd2f6e8621a39e62a7", "a07f86b35d7679ecc2482b2cc8c0b5f9"),
