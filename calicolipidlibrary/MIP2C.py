@@ -45,6 +45,25 @@ class MIP2C(SphingoLipid):
 			return(FRAGMENTS)
 
 
+		def generateLibrary(self, target=None, mode="pos"):
+			if target: handle = open(target, 'a+')
+			if mode == "pos":
+				adduct_set = self.pos_adduct_set
+			elif mode == "neg":
+				adduct_set = self.neg_adduct_set
+			# parent = self.__bases__[0]
+			class_name = self.__class__.__name__
+			for c1 in self.chain1_ranges:
+				for c2 in self.chain2_ranges:
+					for adduct in adduct_set:
+						self.set_chains_and_adduct(class_name, [c1[0],c2[0]], [c1[1],c2[1]], [c1[2],c2[2]],  adduct=adduct)
+						content = self.printNist()
+						if target:
+							handle.write(content)
+						else:
+							sys.stdout.write(content)
+			if target: handle.close()
+
 
 
 
