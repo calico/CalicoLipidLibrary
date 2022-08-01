@@ -19,7 +19,7 @@ def file_checksum(fname, chunksize=8192):
 def checksum_for_generated_library(lipid_cls, ion):
     f = tempfile.NamedTemporaryFile(mode='w+', delete=False)
     f.close()
-    lipid_cls.generateLibrary(f.name, mode=ion)
+    lipid_cls().generateLibrary(f.name, mode=ion)
     csum = file_checksum(f.name)
     os.unlink(f.name)  # delete the file
     return csum
