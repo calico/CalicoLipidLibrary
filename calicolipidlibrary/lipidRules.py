@@ -53,68 +53,76 @@ ALL_ADDUCTS = POS_ADDUCTS.copy()
 ALL_ADDUCTS |= NEG_ADDUCTS.copy()
 
 ALL_LIPID_CLASSES = {
+    "AcGD1a",
+    "AcGD1b",
+    "AcGD2",
+    "AcGD3",
+    "AcGM1",                # 5
     "AcGM2",
     "AcGM3",
-    "Alkyl_LPC",
+    "AcGQ1b",
+    "AcGT1b",
+    "Alkyl_LPC",            # 10
     "Alkyl_LPE",
-    "Alkyl_LPS",                # 5
+    "Alkyl_LPS",
     "Alkyl_PC",
     "Alkyl_PE",
-    "Alkyl_PS",
+    "Alkyl_PS",             # 15
+    "APCS",
     "BDP",
-    "BMP",                      # 10
+    "BMP",
     "Carn",
-    "CDP_DG",
+    "CDP_DG",               # 20
     "CE",
     "Ceramide",
-    "Ceramide_P",               # 15
+    "Ceramide_P",
     "CL",
-    "CPE",
+    "CPE",                  # 25
     "CPI",
     "DG",
-    "DGDG",                     # 20
+    "DGDG",
     "DGTS",
-    "DMPE",
+    "DMPE",                    # 30
     "ErgE",
     "Ethanolamine",
-    "FA",                       # 25
+    "FA",
     "FAHFA",
-	"GB3",
+    "GB3",                  # 35
     "GcGM2",
     "GcGM3",
-    "HemiBMP",					# 30
+    "HemiBMP",
     "HexCer",
-    "LacCer",
+    "LacCer",               # 40
     "LCB_P",
     "LCB",
-    "LPA",                      # 35
+    "LPA",
     "LPC",
-    "LPE",
+    "LPE",                  # 45
     "LPG",
     "LPI",
-    "LPS",                   	# 40
+    "LPS",
     "LysoCL",
-    "LysoCPE",
+    "LysoCPE",              # 50
     "LysoCPI",
     "LysoHexCer",
-    "LysoSM",                   # 45
+    "LysoSM",
     "MG",
-    "MGDG",
+    "MGDG",                 # 55
     "MIP2C",
     "MIPC",
-    "MMPE",                		# 50
+    "MMPE",
     "N_Acyl_PE",
-    "N_Acyl_PS",
+    "N_Acyl_PS",            # 60
     "PA",
     "PC",
-    "PE",                       # 55
+    "PE",
     "PG",
-    "PI",
+    "PI",                   # 65
     "PS",
     "SM",
-    "Sulfatide",                # 60
+    "Sulfatide",
     "Taurine",
-    "TG",
+    "TG",                   # 70
 }
 
 def MW(form):  # calc MW from string that is chemical formula

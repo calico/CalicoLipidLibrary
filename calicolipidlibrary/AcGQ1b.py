@@ -137,5 +137,5 @@ class AcGQ1b(SphingoLipid):
 
 
 
-x  = AcGQ1b("AcGQ1b",[[18,1,1], [18,0,0]],  adduct="[M+2H]2+")
-print x.printNist()
+# x  = AcGQ1b("AcGQ1b",[[18,1,1], [18,0,0]],  adduct="[M+2H]2+")
+# print x.printNist()
