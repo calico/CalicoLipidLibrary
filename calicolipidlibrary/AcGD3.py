@@ -114,7 +114,7 @@ class AcGD3(SphingoLipid):
 
 
 
-x  = AcGD3("AcGD3",[[18,1,1], [23,0,0]],  adduct="[M+H]+")
-print x.printNist()
+# x  = AcGD3("AcGD3",[[18,1,1], [23,0,0]],  adduct="[M+H]+")
+# print x.printNist()
 
 

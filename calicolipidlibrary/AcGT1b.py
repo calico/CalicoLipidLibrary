@@ -147,16 +147,16 @@ class AcGT1b(SphingoLipid):
 
 
 
-x  = AcGT1b("AcGT1b",[[18,1,1], [18,0,0]],  adduct="[M+H]+")
-print x.printNist()
-
-
-
-x  = AcGT1b("AcGT1b",[[18,1,1], [18,0,0]],  adduct="[M+2H]2+")
-print x.printNist()
-
-
-
-x  = AcGT1b("AcGT1b",[[18,1,1], [18,0,0]],  adduct="[M+Na]+")
-print x.printNist()
+# x  = AcGT1b("AcGT1b",[[18,1,1], [18,0,0]],  adduct="[M+H]+")
+# print x.printNist()
+#
+#
+#
+# x  = AcGT1b("AcGT1b",[[18,1,1], [18,0,0]],  adduct="[M+2H]2+")
+# print x.printNist()
+#
+#
+#
+# x  = AcGT1b("AcGT1b",[[18,1,1], [18,0,0]],  adduct="[M+Na]+")
+# print x.printNist()
 
