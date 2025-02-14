@@ -79,7 +79,15 @@ def print_spectrum(lipid_class, chains=[], adduct=""):
             print(lipid)
         return
 
-    eval_str = lipid_class + \
-               "('" + lipid_class + "', " + chains.__str__() + ", '" + adduct + "').printNist()"
+    eval_str = (
+        lipid_class
+        + "('"
+        + lipid_class
+        + "', "
+        + chains.__str__()
+        + ", '"
+        + adduct
+        + "').printNist()"
+    )
 
     print(eval(eval_str))
