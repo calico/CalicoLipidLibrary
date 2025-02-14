@@ -3,36 +3,45 @@ import argparse
 import os
 from calicolipidlibrary import *
 
+
 def cli_parser():
+    parser = argparse.ArgumentParser(
+        description="entry point to create calico lipid libraries",
+        usage="python generateDB.py -m [pos|neg] -o [output_directory",
+    )
 
-    parser = argparse.ArgumentParser(description="entry point to create calico lipid libraries",
-                                     usage="python2.7 generateDB.py -m [pos|neg] -o [output_directory")
+    parser.add_argument(
+        "-m", "--ion-mode", help="ion_mode", dest="ion_mode", default="neg"
+    )
 
-    parser.add_argument('-m', '--ion-mode',
-                        help='ion_mode',
-                        dest='ion_mode',
-                        default='neg')
+    parser.add_argument(
+        "-o",
+        "--output-path",
+        help="output folder",
+        dest="output_folder",
+        default=os.getcwd(),
+    )
 
-    parser.add_argument('-o', "--output-path",
-                        help='output folder',
-                        dest='output_folder',
-                        default=os.getcwd())
+    parser.add_argument(
+        "-c",
+        "--lipid-classes",
+        help="list of lipid classes to include",
+        dest="lipid_classes",
+        default="",
+    )
 
-    parser.add_argument('-c', "--lipid-classes",
-                       help='list of lipid classes to include',
-                       dest='lipid_classes',
-                       default='')
-
-    parser.add_argument('-n', "--output-name",
-                        help="output file name",
-                        dest="output_file_name",
-                        default='')
+    parser.add_argument(
+        "-n",
+        "--output-name",
+        help="output file name",
+        dest="output_file_name",
+        default="",
+    )
 
     return parser
 
 
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     try:
         arg1 = sys.argv[1]
     except IndexError:
@@ -48,7 +57,9 @@ if __name__ == '__main__':
         print("\tName of output lipids library file.")
         print("\tDEFAULT: <date>-Calico-Lipids-[all|<lipid-classes>]-<ion>.msp")
         print("-c <lipid-classes>:")
-        print("\tSupply desired lipid classes, in a comma-delimited string (e.g., 'PS,PC,PE'")
+        print(
+            "\tSupply desired lipid classes, in a comma-delimited string (e.g., 'PS,PC,PE'"
+        )
         print("\tDEFAULT: all available lipid classes.\n")
         print("AVAILABLE LIPID CLASSES:")
         for lipid_class in ALL_LIPID_CLASSES:
@@ -64,12 +75,14 @@ if __name__ == '__main__':
     path = args.output_folder
 
     ion = None
-    if args.ion_mode == 'neg' or args.ion_mode == 'pos':
+    if args.ion_mode == "neg" or args.ion_mode == "pos":
         ion = args.ion_mode
     else:
-        print("Supplied ion mode argument could not be interpreted,\n"
-              "please use 'neg' for negative mode or 'pos' for positive mode.\n"
-              "Exiting program.")
+        print(
+            "Supplied ion mode argument could not be interpreted,\n"
+            "please use 'neg' for negative mode or 'pos' for positive mode.\n"
+            "Exiting program."
+        )
 
         exit(1)
 
@@ -77,14 +90,15 @@ if __name__ == '__main__':
     if len(args.lipid_classes) == 0:
         lipid_classes = ALL_LIPID_CLASSES.copy()
     else:
-        lipid_classes_raw = [x.strip() for x in args.lipid_classes.split(",")]
+        lipid_classes_raw = [
+            re.sub(r'["\']', "", x.strip()) for x in args.lipid_classes.split(",")
+        ]
         for lipid_class in lipid_classes_raw:
             if lipid_class in ALL_LIPID_CLASSES:
                 lipid_classes.append(lipid_class)
 
     file_name = args.output_file_name  # file name only, no system path
     if len(file_name) == 0:
-
         now = datetime.datetime.now()
         date = str(now.year) + str(now.month).zfill(2) + str(now.day).zfill(2)
         fnbase = "-Calico-Lipids-"
@@ -112,15 +126,23 @@ if __name__ == '__main__':
             print(lipid_class)
     print("====================================")
 
-    open(output_msp_file, 'w')
+    open(output_msp_file, "w")
 
     for lipid_class in lipid_classes:
         msg = "Enumerating spectra for " + lipid_class + "  ... "
+        instantiate_str = lipid_class + " = " + lipid_class + "()"
         sys.stdout.write(msg)
-        eval_str = lipid_class+".generateLibrary(target='"+output_msp_file+"', mode='"+ion+"')"
+        eval_str = (
+            lipid_class
+            + ".generateLibrary(target='"
+            + output_msp_file
+            + "', mode='"
+            + ion
+            + "')"
+        )
+        exec(instantiate_str)
         eval(eval_str)
         sys.stdout.write(" DONE\n")
 
     print("All Processes Successfully Completed!")
     exit(0)
-
