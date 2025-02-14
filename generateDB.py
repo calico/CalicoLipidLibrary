@@ -90,7 +90,9 @@ if __name__ == "__main__":
     if len(args.lipid_classes) == 0:
         lipid_classes = ALL_LIPID_CLASSES.copy()
     else:
-        lipid_classes_raw = [re.sub(r'["\']', '', x.strip()) for x in args.lipid_classes.split(",")]
+        lipid_classes_raw = [
+            re.sub(r'["\']', "", x.strip()) for x in args.lipid_classes.split(",")
+        ]
         for lipid_class in lipid_classes_raw:
             if lipid_class in ALL_LIPID_CLASSES:
                 lipid_classes.append(lipid_class)
@@ -128,6 +130,7 @@ if __name__ == "__main__":
 
     for lipid_class in lipid_classes:
         msg = "Enumerating spectra for " + lipid_class + "  ... "
+        instantiate_str = lipid_class + " = " + lipid_class + "()"
         sys.stdout.write(msg)
         eval_str = (
             lipid_class
@@ -137,6 +140,7 @@ if __name__ == "__main__":
             + ion
             + "')"
         )
+        exec(instantiate_str)
         eval(eval_str)
         sys.stdout.write(" DONE\n")
 

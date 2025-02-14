@@ -419,6 +419,12 @@ LIPID_MAPS = {
 
 
 class Lipid:
+    def __init__(self):
+        self.lipidclass = ""
+        self.chains = list()
+        self.adduct = ""
+        self.lipidName = ""
+
     # for standards C30 method
     # neg_adduct_set = ["[M-H]-", "[M+FA-H]-", "[M+Cl]-"]
     # pos_adduct_set = ["[M+H]+", "[M+Na]+", "[M+K]+", "[M+NH4]+"]
@@ -431,10 +437,11 @@ class Lipid:
 
     # lipidclass is one of the above listed lipid backbones
     # chains is a list of lists, where each member list is [#carbons, #double bond, #hydroxyls] for one carbon chain in the lipid
-    def set_chains_and_adduct(self, lipidclass, chains=[], adduct=""):
+    def set_chains_and_adduct(self, lipidclass, chains=[], adduct="", lipidName=""):
         self.lipidclass = lipidclass
         self.chains = chains
         self.adduct = adduct
+        self.lipidName = lipidName
 
         if not self.adduct:
             raise Exception("Please define adduct")
