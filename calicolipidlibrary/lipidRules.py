@@ -750,7 +750,7 @@ class Lipid:
 # DG, PA, PC, PE, PG, PI, PS, BMP, HexDG, MMPE, DMPE, DG, FAFHFA
 class GPL(Lipid):
     chain1_ranges = []
-    for c in [2] + range(10, 22) + range(22, 34, 2):
+    for c in [2] + list(range(10, 22)) + list(range(22, 34, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -758,7 +758,7 @@ class GPL(Lipid):
                 chain1_ranges.append([c, d, h])
 
     chain2_ranges = []
-    for c in [2] + range(10, 22) + range(22, 34, 2):
+    for c in [2] + list(range(10, 22)) + list(range(22, 34, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -776,7 +776,7 @@ class GPL(Lipid):
 # Alkyl_PC, Alkyl_PE, Alkyl_PS
 class alkylGPL(Lipid):
     chain1_ranges = []
-    for c in [2] + range(10, 23):
+    for c in [2] + list(range(10, 23)):
         for d in range(0, 3):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -784,7 +784,7 @@ class alkylGPL(Lipid):
                 chain1_ranges.append([c, d, h])
 
     chain2_ranges = []
-    for c in [2] + range(10, 22) + range(22, 34, 2):
+    for c in [2] + list(range(10, 22)) + list(range(22, 34, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -800,7 +800,7 @@ class alkylGPL(Lipid):
 # TG,
 class Triglyceride(Lipid):
     chain1_ranges = []
-    for c in [2] + range(10, 26, 2):
+    for c in [2] + list(range(10, 26, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -808,7 +808,7 @@ class Triglyceride(Lipid):
                 chain1_ranges.append([c, d, h])
 
     chain2_ranges = []
-    for c in [2] + range(10, 26, 2):
+    for c in [2] + list(range(10, 26, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -816,7 +816,7 @@ class Triglyceride(Lipid):
                 chain2_ranges.append([c, d, h])
 
     chain3_ranges = []
-    for c in [2] + range(10, 26, 2):
+    for c in [2] + list(range(10, 26, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -837,7 +837,7 @@ class Triglyceride(Lipid):
 # N_Acyl_PE, N_Acyl_PS
 class NAcylGPL(Lipid):
     chain1_ranges = []
-    for c in [2] + range(10, 26, 2):
+    for c in [2] + list(range(10, 26, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -845,7 +845,7 @@ class NAcylGPL(Lipid):
                 chain1_ranges.append([c, d, h])
 
     chain2_ranges = []
-    for c in [2] + range(10, 26, 2):
+    for c in [2] + list(range(10, 26, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -853,7 +853,7 @@ class NAcylGPL(Lipid):
                 chain2_ranges.append([c, d, h])
 
     chain3_ranges = []
-    for c in [2] + range(10, 26, 2):
+    for c in [2] + list(range(10, 26, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -898,7 +898,7 @@ class SphingoLipid(Lipid):
                 chain1_ranges.append([c, d, h])
 
     chain2_ranges = []
-    for c in [2] + range(14, 25):
+    for c in [2] + list(range(14, 25)):
         for d in range(0, 7):
             for h in range(0, 2):
                 chain2_ranges.append([c, d, h])
@@ -912,7 +912,7 @@ class SphingoLipid(Lipid):
 # LPA, LPC, LPE, LPG, LPI, LPS
 class LysoGPL(Lipid):
     chain1_ranges = []
-    for c in range(2, 22) + range(22, 34, 2):
+    for c in list(range(2, 22)) + list(range(22, 34, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -927,7 +927,7 @@ class LysoGPL(Lipid):
 # MG
 class MAG(Lipid):
     chain1_ranges = []
-    for c in range(2, 22) + range(22, 34, 2):
+    for c in list(range(2, 22)) + list(range(22, 34, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -941,7 +941,7 @@ class MAG(Lipid):
 # Alkyl_LPC, ALkyl_LPE, Alkyl_LPS
 class AlkylLysoGPL(Lipid):
     chain1_ranges = []
-    for c in [2] + range(10, 23):
+    for c in [2] + list(range(10, 23)):
         for d in range(0, 3):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -968,7 +968,7 @@ class LysoSphingoLipid(Lipid):
 # CE, ErgE, Ethanolamine, FA, Carn,
 class singleAcyl(Lipid):
     chain1_ranges = []
-    for c in range(2, 22) + range(22, 34, 2):
+    for c in list(range(2, 22)) + list(range(22, 34, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -982,7 +982,7 @@ class singleAcyl(Lipid):
 # CL, LysoCL
 class CardioLipin(Lipid):
     chain1_ranges = []
-    for c in [2] + range(14, 26, 2):
+    for c in [2] + list(range(14, 26, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
@@ -1007,7 +1007,7 @@ class CardioLipin(Lipid):
 
 class LysoCardioLipin(Lipid):
     chain1_ranges = []
-    for c in [2] + range(14, 26, 2):
+    for c in [2] + list(range(14, 26, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
