@@ -6,7 +6,7 @@ from calicolipidlibrary import *
 def cli_parser():
 
     parser = argparse.ArgumentParser(description="entry point to create calico lipid libraries",
-                                     usage="python2.7 generateDB.py -m [pos|neg] -o [output_directory")
+                                     usage="python generateDB.py -m [pos|neg] -o [output_directory")
 
     parser.add_argument('-m', '--ion-mode',
                         help='ion_mode',
