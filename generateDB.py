@@ -90,7 +90,7 @@ if __name__ == "__main__":
     if len(args.lipid_classes) == 0:
         lipid_classes = ALL_LIPID_CLASSES.copy()
     else:
-        lipid_classes_raw = [x.strip() for x in args.lipid_classes.split(",")]
+        lipid_classes_raw = [re.sub(r'["\']', '', x.strip()) for x in args.lipid_classes.split(",")]
         for lipid_class in lipid_classes_raw:
             if lipid_class in ALL_LIPID_CLASSES:
                 lipid_classes.append(lipid_class)
