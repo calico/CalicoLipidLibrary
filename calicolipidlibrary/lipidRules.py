@@ -132,8 +132,7 @@ ALL_LIPID_CLASSES = {
     "Sulfatide",
     "Taurine",
     "TG",  # 70
-    "OAcylCeramide",
-    "RetinylE"
+    "OAcylCeramide"
 }
 
 
@@ -1017,7 +1016,7 @@ class singleAcyl(Lipid):
         chain_sets.append([c1])
 
 
-# CL, LysoCL
+# CL
 class CardioLipin(Lipid):
     chain1_ranges = []
     for c in [2] + list(range(14, 26, 2)):
@@ -1048,10 +1047,10 @@ class CardioLipin(Lipid):
                     # if (c2[0] == c1[0] and c2[1] < c1[0]): continue
                     # if c4[0] < c3[0]: continue
                     # if (c4[0] == c3[0] and c3[1] < c1[0]): continue
-                    # if (c3[0] < c1[0] or (c3[0] == c1[0] and c3[1] < c3[1])): continue # use for Maven, but not database
+                    # if (c3[0] < c1[0] or (c3[0] == c1[0] and c3[1] < c3[1])):
                     chain_sets.append([c1, c2, c3, c4])
 
-
+#LysoCL
 class LysoCardioLipin(Lipid):
     chain1_ranges = []
     for c in [2] + list(range(14, 26, 2)):
@@ -1072,10 +1071,7 @@ class LysoCardioLipin(Lipid):
                 if c3[0] < c2[0]: continue
                 if (c3[0] == c2[0] and c3[1] < c2[1]): continue
                 if c3[0] < c2[0]: continue
-                # if c2[0] < c1[0]: continue
-                # if (c2[0] == c1[0] and c2[1] < c1[0]): continue
-                # if c3[0] < c2[0]: continue
-                # if (c3[0] == c2[0] and c3[1] < c1[0]): continue
+
                 chain_sets.append([c1, c2, c3])
 
 
