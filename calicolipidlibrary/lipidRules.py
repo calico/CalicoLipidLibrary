@@ -1,6 +1,7 @@
 import re
 import sys
 
+
 H2O = 18.01056
 NH3 = 17.00274
 PROTON = 1.00727645229
@@ -131,6 +132,8 @@ ALL_LIPID_CLASSES = {
     "Sulfatide",
     "Taurine",
     "TG",  # 70
+    "OAcylCeramide",
+    "RetinylE"
 }
 
 
@@ -226,6 +229,7 @@ LIPID_BACKBONES = {
     "MG": ["bbGL", ["acyl"]],
     "CE": ["bbSterol", ["acyl"]],
     "ErgE": ["bbSterol", ["acyl"]],
+    "RetinylE": ["bbRetinol", ["acyl"]],
     "Carn": ["bbCarn", ["acyl"]],
     "FA": ["bbFatty", ["acyl"]],
     "CL": ["bbCL", ["acyl", "acyl", "acyl", "acyl"]],
@@ -261,6 +265,8 @@ LIPID_BACKBONES = {
     "HemiBMP": ["bbGPL", ["acyl", "acyl", "acyl"]],
     "BDP": ["bbGPL", ["acyl", "acyl", "acyl", "acyl"]],
     "CDP_DG": ["bbGPL", ["acyl", "acyl"]],
+    "OAcylCeramide": ["bbAcylSL", ["sbase", "amide", "acyl"]],
+
 }
 
 LIPID_HEADS = {
@@ -302,6 +308,7 @@ LIPID_HEADS = {
     "DG": [3, 5, 0, 0, 0, 0],
     "MG": [3, 5, 0, 0, 0, 0],
     "CE": [27, 45, 0, 0, 0, 0],
+    "RetinylE": [20,29,0,0,0,0],
     "ErgE": [28, 43, 0, 0, 0, 0],
     "Carn": [7, 14, 1, 2, 0, 0],
     "FA": [0, 1, 0, 0, 0, 0],
@@ -338,6 +345,7 @@ LIPID_HEADS = {
     "HemiBMP": [6, 12, 0, 5, 1, 0],
     "BDP": [6, 11, 0, 4, 1, 0],
     "CDP_DG": [12, 19, 3, 11, 2, 0],
+    "OAcylCeramide": [0,0,0,0,0,0]
 }
 
 
@@ -415,6 +423,8 @@ LIPID_MAPS = {
     "HemiBMP": "GP0409",
     "BDP": "GP0408",
     "CDP_DG": "GP1301",
+    "OAcylCeramide": "SP0204",
+    "RetinylE": "PR0109"
 }
 
 
@@ -431,8 +441,10 @@ class Lipid:
     # NCE = "20,30,40"
 
     # for DI libraries
-    neg_adduct_set = ["[M-H]-", "[M+Cl]-", "[M+37Cl]-", "[M+FA-H]-", "[M+AcOH-H]-"]
-    pos_adduct_set = ["[M+Li]+", "[M+H]+", "[M+Na]+", "[M+NH4]+", "[M+K]+"]
+    #neg_adduct_set = ["[M-H]-", "[M+Cl]-", "[M+37Cl]-", "[M+FA-H]-", "[M+AcOH-H]-"]
+    #pos_adduct_set = ["[M+Li]+", "[M+H]+", "[M+Na]+", "[M+NH4]+", "[M+K]+"]
+    neg_adduct_set = ["[M-H]-","[M+FA-H]-"]
+    pos_adduct_set = ["[M+H]+", "[M+Na]+", "[M+NH4]+"]
     NCE = ""
 
     # lipidclass is one of the above listed lipid backbones
@@ -515,6 +527,8 @@ class Lipid:
                 formula[O] += 1
                 formula[H] += 1
 
+
+
             if len(chainType) < 4 and bbType == "bbCL":
                 lysoCount = 4 - len(chainType)
                 formula[O] += lysoCount
@@ -547,7 +561,6 @@ class Lipid:
         Nchains = len(self.chains)
         totalC = 0
         totalD = 0
-
         h = []
         for chain in self.chains:
             h.append(chain[2])  # list of hydroxyls on each carbon chain
@@ -596,7 +609,10 @@ class Lipid:
             name = re.sub(
                 "Alkyl_", "", self.lipidclass
             )  # to removed Alkyl labels from plasmalogens
-            FullName = name + "(" + "/".join(ChainStrings) + ")"
+            if (Nchains > 2) &  (self.lipidclass not in ["OAcylCeramide", "N_Acyl_PE", "N_Acyl_PS" ]):
+                FullName = name + "(" + "_".join(ChainStrings) + ")"
+            else:
+                FullName = name + "(" + "/".join(ChainStrings) + ")"
             FullNameWithAdduct = FullName + " " + self.adduct
 
         else:  # for isoprene lipids, where N = # of isoprene units
@@ -814,30 +830,17 @@ class Triglyceride(Lipid):
             for h in [0]:
                 chain1_ranges.append([c, d, h])
 
-    chain2_ranges = []
-    for c in [2] + list(range(10, 26, 2)):
-        for d in range(0, 7):
-            if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
-                continue
-            for h in [0]:
-                chain2_ranges.append([c, d, h])
-
-    chain3_ranges = []
-    for c in [2] + list(range(10, 26, 2)):
-        for d in range(0, 7):
-            if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
-                continue
-            for h in [0]:
-                chain3_ranges.append([c, d, h])
+    chain2_ranges = chain1_ranges
+    chain3_ranges = chain1_ranges
 
     chain_sets = []
     for c1 in chain1_ranges:
         for c2 in chain2_ranges:
             for c3 in chain3_ranges:
-                # if c2[0] < c1[0]: continue
-                # if (c2[0] == c1[0] and c2[1] < c1[0]): continue
-                # if c3[0] < c2[0]: continue
-                # if (c3[0] == c2[0] and c3[1] < c1[0]): continue
+                if c2[0] < c1[0]: continue
+                if (c2[0] == c1[0] and c2[1] < c1[1]): continue
+                if c3[0] < c2[0]: continue
+                if (c3[0] == c2[0] and c3[1] < c2[1]): continue
                 chain_sets.append([c1, c2, c3])
 
 
@@ -914,6 +917,34 @@ class SphingoLipid(Lipid):
     for c1 in chain1_ranges:
         for c2 in chain2_ranges:
             chain_sets.append([c1, c2])
+
+
+class AcylSphingoLipid(Lipid):
+    chain1_ranges = []
+    for c in range(14, 21):
+        for d in range(0, 2):
+            for h in range(1, 2):
+                chain1_ranges.append([c, d, h])
+
+    chain2_ranges = []
+    for c in [2] + list(range(14, 25)):
+        for d in range(0, 7):
+            for h in range(0, 2):
+                chain2_ranges.append([c, d, h])
+
+    chain3_ranges = []
+    for c in [2] + list(range(14, 25)):
+        for d in range(0, 7):
+            for h in range(0, 2):
+                chain3_ranges.append([c, d, h])
+
+    chain_sets = []
+    for c1 in chain1_ranges:
+        for c2 in chain2_ranges:
+            for c3 in chain3_ranges:
+                chain_sets.append([c1, c2, c3])
+
+    #chain_sets = [[[18,1,1], [17,0,0],[18,1,0]]]
 
 
 # LPA, LPC, LPE, LPG, LPI, LPS
@@ -1004,6 +1035,15 @@ class CardioLipin(Lipid):
         for c2 in chain2_ranges:
             for c3 in chain3_ranges:
                 for c4 in chain4_ranges:
+                    if c2[0] < c1[0]: continue
+                    if (c2[0] == c1[0] and c2[1] < c1[1]): continue
+                    if c3[0] < c2[0]: continue
+                    if (c3[0] == c2[0] and c3[1] < c2[1]): continue
+                    if c3[0] < c2[0]: continue
+                    if (c3[0] == c2[0] and c3[1] < c2[1]): continue
+                    if c4[0] < c3[0]: continue
+                    if (c4[0] == c3[0] and c3[1] < c2[1]): continue
+
                     # if c2[0] < c1[0]: continue
                     # if (c2[0] == c1[0] and c2[1] < c1[0]): continue
                     # if c4[0] < c3[0]: continue
@@ -1027,6 +1067,11 @@ class LysoCardioLipin(Lipid):
     for c1 in chain1_ranges:
         for c2 in chain2_ranges:
             for c3 in chain3_ranges:
+                if c2[0] < c1[0]: continue
+                if (c2[0] == c1[0] and c2[1] < c1[1]): continue
+                if c3[0] < c2[0]: continue
+                if (c3[0] == c2[0] and c3[1] < c2[1]): continue
+                if c3[0] < c2[0]: continue
                 # if c2[0] < c1[0]: continue
                 # if (c2[0] == c1[0] and c2[1] < c1[0]): continue
                 # if c3[0] < c2[0]: continue
