@@ -1,5 +1,11 @@
 import re
 import sys
+from types import NoneType
+
+from create_smiles import *
+from rdkit import Chem
+from rdkit.Chem import Descriptors
+from rdkit.Chem import rdMolDescriptors
 
 
 H2O = 18.01056
@@ -326,7 +332,7 @@ LIPID_HEADS = {
     "GcGM2": [23 + 8, 38 + 15 - 2, 1 + 1, 20 + 6 - 1, 0, 0],
     "N_Acyl_PS": [6, 12 - 1, 0, 6, 1, 0],
     "N_Acyl_PE": [5, 12 - 1, 0, 4, 1, 0],
-    "Ethanolamine": [2, 5, 0, 1, 0, 0],
+    "Ethanolamine": [2, 6, 0, 1, 0, 0],
     "CPI": [6, 12, 0, 9, 1, 0],
     "MIPC": [12, 22, 0, 14, 1, 0],
     "MIP2C": [18, 33, 0, 22, 2, 0],
@@ -635,7 +641,7 @@ class Lipid:
         # 		else:
         # 			i = i + 1
 
-        # for MS3 case to collapse peaks in MS2 and separately collapse peaks in MS3 if the have the same MS2 precursor
+        # for MS3 case to collapse peaks in MS2 and separately collapse peaks in MS3 if they have the same MS2 precursor
         if True:
             FRAGMENTS_3 = []
             i = 0
@@ -724,14 +730,34 @@ class Lipid:
         RECORD.append("CLASS: " + self.lipidclass + "\n")
         RECORD.append("LIPID MAPS CLASS: " + LIPID_MAPS[self.lipidclass] + "\n")
         RECORD.append("FORMULA: " + self.prettyFormula() + "\n")
+        RECORD.append("SMILES: " + get_lipid_smiles(self.lipidclass, LIPID_BACKBONES[self.lipidclass][0],
+                                                    LIPID_BACKBONES[self.lipidclass][1], self.chains) + "\n")
         RECORD.append("NumPeaks: " + str(len(FRAGMENTS)) + "\n")
+
+        smiles = get_lipid_smiles(self.lipidclass, LIPID_BACKBONES[self.lipidclass][0],
+                                                     LIPID_BACKBONES[self.lipidclass][1], self.chains)
+
+        #Temporary checks to make sure that WM from smiles matches the calculated MW
+        mol = Chem.MolFromSmiles(smiles)
+        smiles_mw = Chem.Descriptors.ExactMolWt(mol)
+        if smiles != "" and smiles_mw != 0.0  and (abs(MASS - smiles_mw) > .0001):
+            if(len(self.chains) ==1 or self.chains[1][2] == 0):
+
+                print(FullName)
+                print("SMILES MW: " + str(Chem.Descriptors.ExactMolWt(mol)))
+                print("My MW: " + str(Chem.rdMolDescriptors.CalcMolFormula(mol)))
+
+        RECORD.append("SMILES CF: " + str(Chem.rdMolDescriptors.CalcMolFormula(mol)) + "\n")
+        #end of temporary check
 
         for f in FRAGMENTS:
             RECORD.append(str(f[0]) + " " + str(f[1]) + " " + str(f[2]) + "\n")
         RECORD.append("\n\n")
         RECORDSTR = "".join(RECORD)
-
-        return RECORDSTR
+        if len(FRAGMENTS) > 0 :
+            return RECORDSTR
+        else:
+            return None
 
     def info(self):
         print(self.lipidclass, self.chains)
@@ -742,7 +768,7 @@ class Lipid:
 
     def theoreticalDigest(self):
         MASS = MW_list(self.MF())
-        PREC = MASS + ADDUCT[self.adduct]
+        #PREC = MASS + ADDUCT[self.adduct]
 
         FRAGMENTS = []
         # FRAGMENTS.append( [PREC, 1000, "pre"] )
@@ -761,9 +787,9 @@ class Lipid:
             for adduct in adduct_set:
                 self.set_chains_and_adduct(class_name, c, adduct=adduct)
                 content = self.printNist()
-                if target:
+                if target and content is not None:
                     handle.write(content)
-                else:
+                elif content is not None:
                     sys.stdout.write(content)
         if target:
             handle.close()
@@ -885,21 +911,7 @@ class NAcylGPL(Lipid):
 
 
 class SphingoLipid(Lipid):
-    # chain1_ranges = []
-    # for c in (range(14,23)):
-    # 	for d in range(0,3):
-    # 		for h in range(0,3):
-    # 			chain1_ranges.append([c,d,h])
 
-    #
-    # chain2_ranges = []
-    # for c in ([2] + range(10,22) + range(22,34,2)):
-    # 	for d in range(0,7):
-    # 		if (c > 5 and c < 22 and d > (c-5)/3) or (c < 6 and d > 0): continue
-    # 		for h in range(0,2):
-    # 			chain2_ranges.append([c,d,h])
-    #
-    #
     chain1_ranges = []
     for c in range(14, 23):
         for d in range(0, 2):
@@ -910,6 +922,8 @@ class SphingoLipid(Lipid):
     for c in [2] + list(range(14, 25)):
         for d in range(0, 7):
             for h in range(0, 2):
+                if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
+                    continue
                 chain2_ranges.append([c, d, h])
 
     chain_sets = []
@@ -923,18 +937,24 @@ class AcylSphingoLipid(Lipid):
     for c in range(14, 21):
         for d in range(0, 2):
             for h in range(1, 2):
+                if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
+                    continue
                 chain1_ranges.append([c, d, h])
 
     chain2_ranges = []
     for c in [2] + list(range(14, 25)):
         for d in range(0, 7):
             for h in range(0, 2):
+                if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
+                    continue
                 chain2_ranges.append([c, d, h])
 
     chain3_ranges = []
     for c in [2] + list(range(14, 25)):
         for d in range(0, 7):
             for h in range(0, 2):
+                if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
+                    continue
                 chain3_ranges.append([c, d, h])
 
     chain_sets = []
