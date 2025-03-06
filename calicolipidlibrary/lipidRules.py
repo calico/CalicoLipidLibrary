@@ -435,17 +435,15 @@ class Lipid:
         self.adduct = ""
         self.lipidName = ""
 
-    # for standards C30 method
-    # neg_adduct_set = ["[M-H]-", "[M+FA-H]-", "[M+Cl]-"]
-    # pos_adduct_set = ["[M+H]+", "[M+Na]+", "[M+K]+", "[M+NH4]+"]
-    # NCE = "20,30,40"
 
-    # for DI libraries
+    # complete set of adducts, for future reference for DI libraries
     #neg_adduct_set = ["[M-H]-", "[M+Cl]-", "[M+37Cl]-", "[M+FA-H]-", "[M+AcOH-H]-"]
     #pos_adduct_set = ["[M+Li]+", "[M+H]+", "[M+Na]+", "[M+NH4]+", "[M+K]+"]
+
+    #current set of adducts we wish to search for
     neg_adduct_set = ["[M-H]-","[M+FA-H]-"]
     pos_adduct_set = ["[M+H]+", "[M+Na]+", "[M+NH4]+"]
-    NCE = ""
+    NCE = "20,30,40"
 
     # lipidclass is one of the above listed lipid backbones
     # chains is a list of lists, where each member list is [#carbons, #double bond, #hydroxyls] for one carbon chain in the lipid
