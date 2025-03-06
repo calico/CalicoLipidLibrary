@@ -68,6 +68,12 @@ for c in range(14, 37):
             sbase_db_table[c][d] = [1] + [x - 3 for x in acyl_db_table[c][d-1]]
 
 
+def convert_to_random_smiles(smiles_str):
+    random_smiles = Chem.MolToSmiles(Chem.MolFromSmiles(smiles_str), isomericSmiles=True, doRandom=True)
+    while(random_smiles[0] != 'C' or random_smiles[-1] != 'C' or random_smiles[1] != 'C'):
+        random_smiles = Chem.MolToSmiles(Chem.MolFromSmiles(smiles_str), isomericSmiles=True, doRandom=True)
+    return random_smiles
+
 
 #take in any smiles and return canonical smiles
 def convert_to_canonical_smiles(smiles_str):
@@ -158,29 +164,59 @@ def get_HemiBMP_smiles(lipidclass, sn_smiles):
 
 
 
-def get_sphingolipid_smiles(lipidclass, sn_smiles):
-    headgroup_smiles = {
+def get_sphingolipid_smiles(lipidclass, sn_smiles, chains):
+
+
+    headgroup_smiles_1OH = { #m lipids, like m18:1
+        "Ceramide": "[C@@H](O)[C@H](C)NC(=O)",
+        "LCB": "[C@@H](O)[C@H](C)N",
+
+    }
+
+    headgroup_smiles_2OH = { #d lipids, like d18:1
         # sphingolipids
         "AcGM2": "[C@@H](O)[C@H](CO[C@@H]1O[C@H](CO)[C@@H](O[C@@H]2O[C@H](CO)[C@H](O[C@@H]3O[C@H](CO)[C@H](O)[C@H](O)[C@H]3NC(C)=O)[C@H](O[C@]3(C(=O)O)C[C@H](O)[C@@H](NC(C)=O)[C@H]([C@H](O)[C@H](O)CO)O3)[C@H]2O)[C@H](O)[C@H]1O)NC(=O)",
         "AcGM3": "[C@@H](O)[C@H](CO[C@@H]1OC(CO)[C@@H](O[C@@H]2OC(CO)[C@H](O)[C@H](O[C@]3(C(=O)O)CC(O)[C@@H](NC(C)=O)C([C@H](O)[C@H](O)CO)O3)C2O)[C@H](O)C1O)NC(=O)",
         "Ceramide": "[C@@H](O)[C@H](CO)NC(=O)",
         "Ceramide_P": "[C@@H](O)[C@H](COP(=O)(O)O)NC(=O)",
         "CPE": "[C@@H](O)[C@H](COP(=O)(O)OCCN)NC(=O)",
-        #"CPI": "C(=O)NC(COP(O)(=O)OC1C(O)C(O)C(O)C(O)C1O)C(O)C(O)", #this is backwards, N needs to be at the end.  I think fixed below
-        "CPI": "C(O)C(COP(O)(=O)OC1C(O)C(O)C(O)C(O)C1O)NC(=O)",
-        # "GcGM2":
+        #"CPI": "C(O)C(COP(O)(=O)OC1C(O)C(O)C(O)C(O)C1O)NC(=O)",
+
+        "GcGM2": "[C@@H](O)[C@H](CO[C@@H]1O[C@H](CO)[C@@H](O[C@@H]2O[C@H](CO)[C@H](O[C@@H]3O[C@H](CO)[C@H](O)[C@H](O)[C@H]3NC(C)=O)[C@H](O[C@]3(C(=O)O)C[C@H](O)[C@@H](NC(CO)=O)[C@H]([C@H](O)[C@H](O)CO)O3)[C@H]2O)[C@H](O)[C@H]1O)NC(=O)", #thand Gemini
         "GcGM3": "[C@@H](O)[C@H](CO[C@@H]1O[C@H](CO)[C@@H](O[C@@H]2O[C@H](CO)[C@H](O)[C@H](O[C@]3(C(=O)O)C[C@H](O)[C@@H](NC(=O)CO)[C@H]([C@H](O)[C@H](O)CO)O3)[C@H]2O)[C@H](O)[C@H]1O)NC(=O)",
         "HexCer": "C(O)C(CO[C@@H]1O[C@H](CO)[C@H](O)[C@H](O)[C@H]1O)NC(=O)",
+        "LacCer": "C(O)C[C@H](O[C@H]1[C@@H](CO)[C@@H](O)[C@H](O)[C@@H](O[C@H]2[C@@H](CO)[C@@H](O)[C@H](O)[C@@H](O)O2)O1)NC(=O)",
         "LCB": "[C@@H](O)[C@@H](N)CO",
         "LCB_P": "[C@H]([C@H](COP(=O)(O)O)N)O",
         "LysoCPE": "[C@@H](O)[C@H](COP(=O)(O)OCCN)N",
-        #"LysoCPI": "NC(COP(O)(=O)OC1C(O)C(O)C(O)C(O)C1O)C(O)C(O)", #this is backwards, N needs to be at the end
+        "LysoCPI":  "C(O)C(COP(O)(=O)OC1C(O)C(O)C(O)C(O)C1O)N",
         "LysoHexCer": "[C@H]([C@H](CO[C@H]1[C@@H]([C@H]([C@@H]([C@H](O1)CO)O)O)O)N)O",
+        "LysoLacCer": "[C@H]([C@H](CO[C@H]1[C@@H]([C@H]([C@@H]([C@H](O1)CO)O[C@H]2[C@@H]([C@H]([C@H]([C@H](O2)CO)O)O)O)O)O)N)O",
         #"MIP2C": "(O)C(=O)NC(COP(O)(=O)OC1C(O)C(O)C(OC2OC(CO)C(OP(O)(=O)OC3C(O)C(O)C(O)C(O)C3O)C(O)C2O)C(O)C1O)C(O)C(O)", #this is backwards, N needs to be at the end
         #"MIPC": "(O)C(=O)NC(COP(O)(=O)OC1C(O)C(O)C(OC2OC(CO)C(O)C(O)C2O)C(O)C1O)C(O)C(O)", #this is backwards, N needs to be at the end
         "SM": "[C@@H](O)[C@H](COP([O-])(=O)OCC[N+](C)(C)C)NC(=O)",
         "Sulfatide": "[C@@H](O)[C@H](CO[C@@H]1O[C@H](CO)[C@H](O)C(OS(=O)(=O)O)C1O)NC(=O)",
 }
+
+    headgroup_smiles_2OH = { #d lipids, like d18:1
+        "Ceramide": "(O)[C@@H](O)[C@H](CO)NC(=O)",
+        "LCB": "CCCCCCCCCCCCC/C=C/[C@@H](O)[C@H](CO)N",
+        "CPI": "[C@@H](O)[C@H](COP(OC1[C@@H]([C@@H](O)C([C@@H](O)[C@H]1O)O)O)(=O)O)NC(=O)",
+        "MIP2C": "(O)[C@@H](O)[C@H](COP(=O)(O[C@@H]1[C@@H]([C@H](O[C@@H]2O[C@@H]([C@@H](O)[C@@H]([C@@H]2O)O)COP(OC2[C@@H]([C@@H](C(O)[C@@H]([C@H]2O)O)O)O)(=O)O)[C@H]([C@H](O)[C@H]1O)O)O)O)NC(=O)",
+        "MIPC": "(O)C(O)C(COP(O)(OC1C(C(C(OC2C(C(C(O)C(O2)CO)O)O)C(C1O)O)O)O)=O)NC(=O)",
+        "Ceramide_P": "[C@@H](O)[C@H](COP(=O)(O)O)NC(=O)",
+    }
+
+#since LCB hydroxyls are incorporated in the head group portion of the SMILES, we need different headgroups for m,d,t LCBs
+    if chains[1][2] == 0:
+        headgroup_smiles = headgroup_smiles_1OH
+    elif chains[1][2] == 1:
+        headgroup_smiles = headgroup_smiles_2OH
+    elif chains[1][2] == 2:
+        headgroup_smiles = headgroup_smiles_3OH
+    else:
+        return("")
+
 
     if lipidclass not in headgroup_smiles:
         return ""
@@ -231,6 +267,7 @@ def get_glycerolipid_smiles(lipidclass, sn_smiles):
         #the rest
         "Carn": "(=O)O[C@H](CC(=O)[O-])C[N+](C)(C)C",
         "CE": "(=O)O[C@H]1CC[C@@]2([C@H]3CC[C@]4([C@H]([C@@H]3CC=C2C1)CC[C@@H]4[C@H](C)CCCC(C)C)C)C",
+        "ErgE": "",
         "Ethanolamine": "(=O)NCCO",
         "FA": "(=O)O",
         "Taurine": "(=O)NCCS(=O)(=O)O",

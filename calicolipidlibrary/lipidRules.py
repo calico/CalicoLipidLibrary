@@ -440,7 +440,7 @@ class Lipid:
         self.adduct = ""
         self.lipidName = ""
 
-    # for standards C30 method
+    # for standard C30 method
     # neg_adduct_set = ["[M-H]-", "[M+FA-H]-", "[M+Cl]-"]
     # pos_adduct_set = ["[M+H]+", "[M+Na]+", "[M+K]+", "[M+NH4]+"]
     # NCE = "20,30,40"
@@ -742,12 +742,10 @@ class Lipid:
         smiles_mw = Chem.Descriptors.ExactMolWt(mol)
         if smiles != "" and smiles_mw != 0.0  and (abs(MASS - smiles_mw) > .0001):
             if(len(self.chains) ==1 or self.chains[1][2] == 0):
-
                 print(FullName)
-                print("SMILES MW: " + str(Chem.Descriptors.ExactMolWt(mol)))
-                print("My MW: " + str(Chem.rdMolDescriptors.CalcMolFormula(mol)))
+                print("SMILES MF: " + str(Chem.rdMolDescriptors.CalcMolFormula(mol)))
 
-        RECORD.append("SMILES CF: " + str(Chem.rdMolDescriptors.CalcMolFormula(mol)) + "\n")
+        RECORD.append("SMILES MF: " + str(Chem.rdMolDescriptors.CalcMolFormula(mol)) + "\n")
         #end of temporary check
 
         for f in FRAGMENTS:
