@@ -1,7 +1,7 @@
 from lipidRules import *
 
 
-class MIP2C(SphingoLipid):
+class MIP2C(PhytoSphingoLipid):
     def theoreticalDigest(self):
         FRAGMENTS = []
         adduct = self.adduct

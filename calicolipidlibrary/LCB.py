@@ -1,7 +1,7 @@
 from lipidRules import *
 
 
-class LCB(LysoSphingoLipid):
+class LCB(Lipid):
     def theoreticalDigest(self):
         FRAGMENTS = []
         adduct = self.adduct

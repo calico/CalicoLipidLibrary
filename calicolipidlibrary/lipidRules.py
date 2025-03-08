@@ -324,9 +324,9 @@ LIPID_HEADS = {
     "AcGM1": [23 + 8 + 6, 38 + 15 - 2 + 10, 1 + 1, 19 + 6 + 5 - 1, 0, 0],
     "AcGD2": [48 - 6, 78 - 10, 3, 37 - 5, 0, 0],
     "AcGD3": [48 - 6 - 8, 78 - 10 - 13, 3 - 1, 37 - 5 - 5, 0, 0],
-    "AcGD1a": [48, 78, 3, 37, 0, 0],
-    "AcGD1b": [48, 78, 3, 37, 0, 0],
-    "AcGT1b": [48 + 11, 78 + 17, 3 + 1, 37 + 8, 0, 0],
+    "AcGD1a": [49, 79, 2, 37, 0, 0],
+    "AcGD1b": [49, 79, 2, 37, 0, 0],
+    "AcGT1b": [60, 96, 3, 45, 0, 0],
     "AcGQ1b": [48 + 22, 78 + 34, 3 + 2, 37 + 16, 0, 0],
     "GcGM3": [23, 38, 1, 20, 0, 0],
     "GcGM2": [23 + 8, 38 + 15 - 2, 1 + 1, 20 + 6 - 1, 0, 0],
@@ -450,7 +450,7 @@ class Lipid:
     #pos_adduct_set = ["[M+Li]+", "[M+H]+", "[M+Na]+", "[M+NH4]+", "[M+K]+"]
     neg_adduct_set = ["[M-H]-","[M+FA-H]-"]
     pos_adduct_set = ["[M+H]+", "[M+Na]+", "[M+NH4]+"]
-    NCE = ""
+    NCE =  "20,30,40"
 
     # lipidclass is one of the above listed lipid backbones
     # chains is a list of lists, where each member list is [#carbons, #double bond, #hydroxyls] for one carbon chain in the lipid
@@ -733,17 +733,15 @@ class Lipid:
         RECORD.append("SMILES: " + get_lipid_smiles(self.lipidclass, LIPID_BACKBONES[self.lipidclass][0],
                                                     LIPID_BACKBONES[self.lipidclass][1], self.chains) + "\n")
         RECORD.append("NumPeaks: " + str(len(FRAGMENTS)) + "\n")
-
         smiles = get_lipid_smiles(self.lipidclass, LIPID_BACKBONES[self.lipidclass][0],
                                                      LIPID_BACKBONES[self.lipidclass][1], self.chains)
 
-        #Temporary checks to make sure that WM from smiles matches the calculated MW
-        mol = Chem.MolFromSmiles(smiles)
-        smiles_mw = Chem.Descriptors.ExactMolWt(mol)
-        if smiles != "" and smiles_mw != 0.0  and (abs(MASS - smiles_mw) > .0001):
-            if(len(self.chains) ==1 or self.chains[1][2] == 0):
-                print(FullName)
-                print("SMILES MF: " + str(Chem.rdMolDescriptors.CalcMolFormula(mol)))
+        # Temporary checks to make sure that molecular weight from smiles matches that calculated from headgroup+sn
+        # mol = Chem.MolFromSmiles(smiles)
+        # smiles_mw = Chem.Descriptors.ExactMolWt(mol)
+        # if smiles == "" or smiles_mw == 0.0  or (abs(MASS - smiles_mw) > .0001):
+        #     print(FullName)
+        #     print("SMILES MF: " + str(Chem.rdMolDescriptors.CalcMolFormula(mol)))
 
         RECORD.append("SMILES MF: " + str(Chem.rdMolDescriptors.CalcMolFormula(mol)) + "\n")
         #end of temporary check
@@ -800,16 +798,16 @@ class GPL(Lipid):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
-            for h in [0]:
-                chain1_ranges.append([c, d, h])
+            h = 0
+            chain1_ranges.append([c, d, h])
 
     chain2_ranges = []
     for c in [2] + list(range(10, 22)) + list(range(22, 34, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
-            for h in [0]:
-                chain2_ranges.append([c, d, h])
+            h = 0
+            chain1_ranges.append([c, d, h])
 
     chain_sets = []
     for c1 in chain1_ranges:
@@ -826,16 +824,16 @@ class alkylGPL(Lipid):
         for d in range(0, 3):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
-            for h in [0]:
-                chain1_ranges.append([c, d, h])
+            h = 0
+            chain1_ranges.append([c, d, h])
 
     chain2_ranges = []
     for c in [2] + list(range(10, 22)) + list(range(22, 34, 2)):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
-            for h in [0]:
-                chain2_ranges.append([c, d, h])
+            h = 0
+            chain1_ranges.append([c, d, h])
 
     chain_sets = []
     for c1 in chain1_ranges:
@@ -850,8 +848,8 @@ class Triglyceride(Lipid):
         for d in range(0, 7):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
-            for h in [0]:
-                chain1_ranges.append([c, d, h])
+            h = 0
+            chain1_ranges.append([c, d, h])
 
     chain2_ranges = chain1_ranges
     chain3_ranges = chain1_ranges
@@ -877,13 +875,7 @@ class NAcylGPL(Lipid):
             for h in [0]:
                 chain1_ranges.append([c, d, h])
 
-    chain2_ranges = []
-    for c in [2] + list(range(10, 26, 2)):
-        for d in range(0, 7):
-            if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
-                continue
-            for h in [0]:
-                chain2_ranges.append([c, d, h])
+    chain2_ranges = chain1_ranges
 
     chain3_ranges = []
     for c in [2] + list(range(10, 26, 2)):
@@ -899,21 +891,23 @@ class NAcylGPL(Lipid):
             for c3 in chain3_ranges:
                 if c2[0] < c1[0]:
                     continue
-                if c2[0] == c1[0] and c2[1] < c1[0]:
-                    continue
+#                if ((c2[0] == c1[0]) and (c2[1] < c1[0])):
+#                    continue
                 chain_sets.append([c1, c2, c3])
 
 
-# AcGM2, AcGM3, GcGM2, GcGM3, MIP2C, MIPC, HexCer, LacCer, PI_Cer, Sulfatide, SM, Ceramide, Ceramide_P
+# AcGM2, AcGM3, GcGM2, GcGM3, MIP2C, MIPC, HexCer, LacCer, PI_Cer, Sulfatide, SM, Ceramide_P
+#Ceramides are separate, as we need to make deoxyceramides, but not other sphingolipids
 # Note that for Sphingolipids, the hydroxyl "head group" does not count as a hydroxyl for the purposes of this script
-
 
 class SphingoLipid(Lipid):
 
     chain1_ranges = []
     for c in range(14, 23):
         for d in range(0, 2):
-            for h in range(0, 3):
+            for h in range(1, 2):
+                if (h > 1 and d > 0):
+                    continue
                 chain1_ranges.append([c, d, h])
 
     chain2_ranges = []
@@ -921,6 +915,33 @@ class SphingoLipid(Lipid):
         for d in range(0, 7):
             for h in range(0, 2):
                 if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
+                        continue
+                if (h > 0 and c == 2):
+                    continue
+                chain2_ranges.append([c, d, h])
+
+    chain_sets = []
+    for c1 in chain1_ranges:
+        for c2 in chain2_ranges:
+            chain_sets.append([c1, c2])
+
+class Ceramide(Lipid):
+
+    chain1_ranges = []
+    for c in range(14, 23):
+        for d in range(0, 2):
+            for h in range(1, 3):
+                if (h > 1 and d > 0):
+                    continue
+                chain1_ranges.append([c, d, h])
+
+    chain2_ranges = []
+    for c in [2] + list(range(14, 25)):
+        for d in range(0, 7):
+            for h in range(0, 2):
+                if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
+                    continue
+                if (h > 0 and c == 2):
                     continue
                 chain2_ranges.append([c, d, h])
 
@@ -930,12 +951,41 @@ class SphingoLipid(Lipid):
             chain_sets.append([c1, c2])
 
 
+class PhytoSphingoLipid(Lipid):
+
+    chain1_ranges = []
+    for c in range(14, 23):
+        d = 0
+        h = 2
+        chain1_ranges.append([c, d, h])
+
+    chain2_ranges = []
+    for c in [2] + list(range(14, 31)):
+        for d in range(0, 7):
+            for h in range(0, 2):
+                if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
+                    continue
+                if (h > 0 and c == 2):
+                    continue
+                chain2_ranges.append([c, d, h])
+
+    chain_sets = []
+    for c1 in chain1_ranges:
+        for c2 in chain2_ranges:
+            chain_sets.append([c1, c2])
+
+
+
+
+#O-acyl-ceramides
 class AcylSphingoLipid(Lipid):
     chain1_ranges = []
     for c in range(14, 21):
         for d in range(0, 2):
             for h in range(1, 2):
                 if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
+                    continue
+                if (h > 1 and d > 0):
                     continue
                 chain1_ranges.append([c, d, h])
 
@@ -945,15 +995,17 @@ class AcylSphingoLipid(Lipid):
             for h in range(0, 2):
                 if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                     continue
+                if (h > 0 and c == 2):
+                    continue
                 chain2_ranges.append([c, d, h])
 
     chain3_ranges = []
     for c in [2] + list(range(14, 25)):
         for d in range(0, 7):
-            for h in range(0, 2):
-                if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
-                    continue
-                chain3_ranges.append([c, d, h])
+            h = 0
+            if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
+                continue
+            chain3_ranges.append([c, d, h])
 
     chain_sets = []
     for c1 in chain1_ranges:
@@ -1007,17 +1059,34 @@ class AlkylLysoGPL(Lipid):
         chain_sets.append([c1])
 
 
-# LysoHexCer, LysoSM, LCB
+# LysoHexCer, LysoSM,
 # Note that for Sphingolipids, the hydroxyl "head group" does not count as a hydroxyl for the purposes of this script
 class LysoSphingoLipid(Lipid):
     chain1_ranges = []
     for c in range(14, 23):
         for d in range(0, 3):
-            for h in range(0, 3):
+            for h in range(1, 3):
+                if (h == 2 and d > 0):
+                    continue
                 chain1_ranges.append([c, d, h])
     chain_sets = []
     for c1 in chain1_ranges:
         chain_sets.append([c1])
+
+
+class LCB(Lipid):
+    chain1_ranges = []
+    for c in range(14, 23):
+        for d in range(0, 3):
+            for h in range(0, 3):
+                if (h == 2 and d > 0):
+                    continue
+                chain1_ranges.append([c, d, h])
+    chain_sets = []
+    for c1 in chain1_ranges:
+        chain_sets.append([c1])
+
+
 
 
 # CE, ErgE, Ethanolamine, FA, Carn,
@@ -1028,6 +1097,8 @@ class singleAcyl(Lipid):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
             for h in [0, 1]:
+                if (h > 0 and c < 6):
+                    continue
                 chain1_ranges.append([c, d, h])
     chain_sets = []
     for c1 in chain1_ranges:
