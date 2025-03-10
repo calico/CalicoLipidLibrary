@@ -247,15 +247,16 @@ def get_sphingolipid_smiles(lipidclass, sn_smiles, chains):
 
     headgroup_smiles_3OH = { #for t LCBs, like t18:0
         "Ceramide": "[C@@H](O)[C@@H](O)[C@H](CO)NC(=O)",
+        "Ceramide_P": "(O)[C@@H](O)[C@H](COP(O)(O)=O)NC(=O)",
+        "CPE": "C(O)[C@@H](O)[C@H](COP(=O)(O)OCCN)NC(=O)",
+        "CPI": "C(O)[C@@H](O)[C@H](COP(OC1[C@@H]([C@@H](O)C([C@@H](O)[C@H]1O)O)O)(=O)O)NC(=O)",
         "LCB": "[C@H]([C@H]([C@H](CO)N)O)O",
         "LCB_P": "[C@H]([C@H]([C@H](COP(=O)(O)O)N)O)O",
         "LysoCPE": "C(O)[C@@H](O)[C@H](COP(=O)(O)OCCN)N",
         "LysoCPI": "C(O)[C@@H](O)[C@H](COP(OC1[C@@H]([C@@H](O)C([C@@H](O)[C@H]1O)O)O)(=O)O)N",
         "LysoHexCer": "C(O)[C@H]([C@H](CO[C@H]1[C@@H]([C@H]([C@@H]([C@H](O1)CO)O)O)O)N)O",
-        "CPI": "C(O)[C@@H](O)[C@H](COP(OC1[C@@H]([C@@H](O)C([C@@H](O)[C@H]1O)O)O)(=O)O)NC(=O)",
         "MIP2C": "[C@@H](O)[C@@H](O)[C@H](COP(O)(=O)O[C@H]1[C@@H]([C@H]([C@H](O)[C@H]([C@H]1O)O[C@H]1[C@H]([C@@H](O)[C@@H]([C@@H](COP(=O)(O)OC2[C@@H]([C@@H](O)C([C@H]([C@H]2O)O)O)O)O1)O)O)O)O)NC(=O)",
         "MIPC": "C(O)[C@@H](O)[C@H](COP(=O)(O)O[C@@H]1[C@H](O)[C@H](O)[C@@H](O)[C@H](O)[C@H]1O[C@@H]1O[C@H](CO)[C@@H](O)[C@H](O)[C@@H]1O)NC(=O)",
-        "Ceramide_P": "(O)[C@@H](O)[C@H](COP(O)(O)=O)NC(=O)",
         "LysoSM": "C(O)[C@H]([C@H](COP(=O)([O-])OCC[N+](C)(C)C)N)O",
 
     }

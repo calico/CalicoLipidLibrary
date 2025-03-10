@@ -3,6 +3,30 @@ from lipidRules import *
 
 # need to fix nomenclature
 class Ceramide(SphingoLipid):
+
+    chain1_ranges = []
+    for c in range(14, 23):
+        for d in range(0, 2):
+            for h in range(1, 3):
+                if (h > 1 and d > 0):
+                    continue
+                chain1_ranges.append([c, d, h])
+
+    chain2_ranges = []
+    for c in [2] + list(range(14, 25)):
+        for d in range(0, 7):
+            for h in range(0, 2):
+                if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
+                    continue
+                if (h > 0 and c == 2):
+                    continue
+                chain2_ranges.append([c, d, h])
+
+    chain_sets = []
+    for c1 in chain1_ranges:
+        for c2 in chain2_ranges:
+            chain_sets.append([c1, c2])
+
     def theoreticalDigest(self):
         FRAGMENTS = []
         adduct = self.adduct

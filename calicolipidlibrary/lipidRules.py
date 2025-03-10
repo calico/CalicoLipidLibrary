@@ -733,8 +733,10 @@ class Lipid:
         RECORD.append("SMILES: " + get_lipid_smiles(self.lipidclass, LIPID_BACKBONES[self.lipidclass][0],
                                                     LIPID_BACKBONES[self.lipidclass][1], self.chains) + "\n")
         RECORD.append("NumPeaks: " + str(len(FRAGMENTS)) + "\n")
-        smiles = get_lipid_smiles(self.lipidclass, LIPID_BACKBONES[self.lipidclass][0],
-                                                     LIPID_BACKBONES[self.lipidclass][1], self.chains)
+
+
+        # smiles = get_lipid_smiles(self.lipidclass, LIPID_BACKBONES[self.lipidclass][0],
+        #                                              LIPID_BACKBONES[self.lipidclass][1], self.chains)
 
         # Temporary checks to make sure that molecular weight from smiles matches that calculated from headgroup+sn
         # mol = Chem.MolFromSmiles(smiles)
@@ -743,7 +745,7 @@ class Lipid:
         #     print(FullName)
         #     print("SMILES MF: " + str(Chem.rdMolDescriptors.CalcMolFormula(mol)))
 
-        RECORD.append("SMILES MF: " + str(Chem.rdMolDescriptors.CalcMolFormula(mol)) + "\n")
+        #RECORD.append("SMILES MF: " + str(Chem.rdMolDescriptors.CalcMolFormula(mol)) + "\n")
         #end of temporary check
 
         for f in FRAGMENTS:
@@ -791,7 +793,7 @@ class Lipid:
             handle.close()
 
 
-# DG, PA, PC, PE, PG, PI, PS, BMP, HexDG, MMPE, DMPE, DG, FAFHFA
+# DG, PA, PC, PE, PG, PI, PS, BMP, HexDG, MMPE, DMPE, DG, FAFHA
 class GPL(Lipid):
     chain1_ranges = []
     for c in [2] + list(range(10, 22)) + list(range(22, 34, 2)):
@@ -807,7 +809,7 @@ class GPL(Lipid):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
             h = 0
-            chain1_ranges.append([c, d, h])
+            chain2_ranges.append([c, d, h])
 
     chain_sets = []
     for c1 in chain1_ranges:
@@ -815,7 +817,6 @@ class GPL(Lipid):
             # if c2[0] < c1[0]: continue
             # if (c2[0] == c1[0] and c2[1] < c1[0]): continue
             chain_sets.append([c1, c2])
-
 
 # Alkyl_PC, Alkyl_PE, Alkyl_PS
 class alkylGPL(Lipid):
@@ -833,7 +834,7 @@ class alkylGPL(Lipid):
             if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
                 continue
             h = 0
-            chain1_ranges.append([c, d, h])
+            chain2_ranges.append([c, d, h])
 
     chain_sets = []
     for c1 in chain1_ranges:
@@ -899,6 +900,8 @@ class NAcylGPL(Lipid):
 # AcGM2, AcGM3, GcGM2, GcGM3, MIP2C, MIPC, HexCer, LacCer, PI_Cer, Sulfatide, SM, Ceramide_P
 #Ceramides are separate, as we need to make deoxyceramides, but not other sphingolipids
 # Note that for Sphingolipids, the hydroxyl "head group" does not count as a hydroxyl for the purposes of this script
+#LCB and Ceramide chains are defined in LCB.py and Ceramide.py
+
 
 class SphingoLipid(Lipid):
 
@@ -925,30 +928,6 @@ class SphingoLipid(Lipid):
         for c2 in chain2_ranges:
             chain_sets.append([c1, c2])
 
-class Ceramide(Lipid):
-
-    chain1_ranges = []
-    for c in range(14, 23):
-        for d in range(0, 2):
-            for h in range(1, 3):
-                if (h > 1 and d > 0):
-                    continue
-                chain1_ranges.append([c, d, h])
-
-    chain2_ranges = []
-    for c in [2] + list(range(14, 25)):
-        for d in range(0, 7):
-            for h in range(0, 2):
-                if (c > 5 and c < 22 and d > (c - 5) / 3) or (c < 6 and d > 0):
-                    continue
-                if (h > 0 and c == 2):
-                    continue
-                chain2_ranges.append([c, d, h])
-
-    chain_sets = []
-    for c1 in chain1_ranges:
-        for c2 in chain2_ranges:
-            chain_sets.append([c1, c2])
 
 
 class PhytoSphingoLipid(Lipid):
@@ -1073,18 +1052,6 @@ class LysoSphingoLipid(Lipid):
     for c1 in chain1_ranges:
         chain_sets.append([c1])
 
-
-class LCB(Lipid):
-    chain1_ranges = []
-    for c in range(14, 23):
-        for d in range(0, 3):
-            for h in range(0, 3):
-                if (h == 2 and d > 0):
-                    continue
-                chain1_ranges.append([c, d, h])
-    chain_sets = []
-    for c1 in chain1_ranges:
-        chain_sets.append([c1])
 
 
 
