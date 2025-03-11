@@ -1,7 +1,7 @@
 from lipidRules import *
 
 
-class CPE(SphingoLipid):
+class CPE(PhytoSphingoLipid):
     def theoreticalDigest(self):
         FRAGMENTS = []
         adduct = self.adduct

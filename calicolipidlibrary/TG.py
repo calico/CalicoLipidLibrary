@@ -3,7 +3,7 @@ from lipidRules import *
 
 
 class TG(Triglyceride):
-    pos_adduct_set = ["[M+Na]+", "[M+K]+", "[M+NH4]+", "[M+Li]+"]
+    pos_adduct_set = ["[M+Na]+", "[M+NH4]+"]
 
     def theoreticalDigest(self):
         FRAGMENTS = []

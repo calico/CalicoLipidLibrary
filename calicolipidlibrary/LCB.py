@@ -1,7 +1,20 @@
 from lipidRules import *
 
 
-class LCB(LysoSphingoLipid):
+class LCB(Lipid):
+
+    chain1_ranges = []
+    for c in range(14, 23):
+        for d in range(0, 3):
+            for h in range(0, 3):
+                if (h == 2 and d > 0):
+                    continue
+                chain1_ranges.append([c, d, h])
+    chain_sets = []
+    for c1 in chain1_ranges:
+        chain_sets.append([c1])
+
+
     def theoreticalDigest(self):
         FRAGMENTS = []
         adduct = self.adduct

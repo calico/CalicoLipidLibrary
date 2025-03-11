@@ -1,7 +1,7 @@
 from lipidRules import *
 
 
-class CPI(SphingoLipid):
+class CPI(PhytoSphingoLipid):
     def theoreticalDigest(self):
         FRAGMENTS = []
         adduct = self.adduct

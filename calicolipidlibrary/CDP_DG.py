@@ -2,7 +2,7 @@ from lipidRules import *
 
 
 class CDP_DG(GPL):
-    pos_adduct_set = ["[M+H]+", "[M+Na]+", "[M+K]+"]
+    pos_adduct_set = ["[M+H]+", "[M+Na]+"]
 
     def theoreticalDigest(self):
         FRAGMENTS = []
