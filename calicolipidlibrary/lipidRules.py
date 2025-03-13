@@ -1,19 +1,15 @@
 import re
 import sys
-from types import NoneType
-
 from create_smiles import *
-from rdkit import Chem
-from rdkit.Chem import Descriptors
-from rdkit.Chem import rdMolDescriptors
 
 
-H2O = 18.01056
-NH3 = 17.00274
+
+H2O = 18.010564683
+NH3 = 17.026549100
 PROTON = 1.00727645229
 HYDROGEN = 1.0078250321
 OXYGEN = 15.9949146221
-ELECTRON = 0.0005489
+ELECTRON = 0.00054857990
 
 ADDUCT = {
     "[M]": 0.0,
@@ -559,7 +555,7 @@ class Lipid:
 
         return formulaStr
 
-    def printNist(self):
+    def printNist(self, retention_times):
         bbType = LIPID_BACKBONES[self.lipidclass][0]
         Nchains = len(self.chains)
         totalC = 0
@@ -622,6 +618,7 @@ class Lipid:
             ChainStrings = str(self.chains[0][0])
             FullName = self.lipidclass + ChainStrings
             FullNameWithAdduct = FullName + " " + self.adduct
+            SumName = FullName
 
         atoms = self.MF()
         MASS = MW_list(atoms)
@@ -731,20 +728,17 @@ class Lipid:
         RECORD.append("SMILES: " + get_lipid_smiles(self.lipidclass, LIPID_BACKBONES[self.lipidclass][0],
                                                     LIPID_BACKBONES[self.lipidclass][1], self.chains) + "\n")
         RECORD.append("NumPeaks: " + str(len(FRAGMENTS)) + "\n")
+        #Add retention times if they are available
+        if retention_times is not None:
+            this_rt_entry = retention_times[retention_times["name"] == FullName]
+            if not this_rt_entry.empty:
+                if "rt" in this_rt_entry.columns.tolist():
+                    RECORD.append(f"RT: {this_rt_entry.iloc[0]["rt"]:.2f}\n")
+                if "rt_min" in this_rt_entry.columns.tolist():
+                    RECORD.append(f"RT_min: {this_rt_entry.iloc[0]["rt_min"]:.2f}\n")
+                if "rt_max" in this_rt_entry.columns.tolist():
+                    RECORD.append(f"RT_max: {this_rt_entry.iloc[0]["rt_max"]:.2f}\n")
 
-
-        # smiles = get_lipid_smiles(self.lipidclass, LIPID_BACKBONES[self.lipidclass][0],
-        #                                              LIPID_BACKBONES[self.lipidclass][1], self.chains)
-
-        # Temporary checks to make sure that molecular weight from smiles matches that calculated from headgroup+sn
-        # mol = Chem.MolFromSmiles(smiles)
-        # smiles_mw = Chem.Descriptors.ExactMolWt(mol)
-        # if smiles == "" or smiles_mw == 0.0  or (abs(MASS - smiles_mw) > .0001):
-        #     print(FullName)
-        #     print("SMILES MF: " + str(Chem.rdMolDescriptors.CalcMolFormula(mol)))
-
-        #RECORD.append("SMILES MF: " + str(Chem.rdMolDescriptors.CalcMolFormula(mol)) + "\n")
-        #end of temporary check
 
         for f in FRAGMENTS:
             RECORD.append(str(f[0]) + " " + str(f[1]) + " " + str(f[2]) + "\n")
@@ -770,19 +764,20 @@ class Lipid:
         # FRAGMENTS.append( [PREC, 1000, "pre"] )
         return FRAGMENTS
 
-    def generateLibrary(self, target=None, mode="pos"):
+    def generateLibrary(self, target=None, mode="pos", retention_times=None):
         if target:
             handle = open(target, "a+")
         if mode == "pos":
             adduct_set = self.pos_adduct_set
         elif mode == "neg":
             adduct_set = self.neg_adduct_set
+        #self.rt =
         # parent = self.__bases__[0]
         class_name = self.__class__.__name__
         for c in self.chain_sets:
             for adduct in adduct_set:
                 self.set_chains_and_adduct(class_name, c, adduct=adduct)
-                content = self.printNist()
+                content = self.printNist(retention_times)
                 if target and content is not None:
                     handle.write(content)
                 elif content is not None:
