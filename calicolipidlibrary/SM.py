@@ -27,7 +27,7 @@ class SM(SphingoLipid):
                         MW_list(
                             [
                                 self.chains[0][0],
-                                (2 * self.chains[0][0] - 2 * self.chains[0][1] - 1),
+                                (2 * self.chains[0][0] - 2 * self.chains[0][1] + 1),
                                 1,
                                 self.chains[0][2],
                                 0,
@@ -45,7 +45,7 @@ class SM(SphingoLipid):
                             MW_list(
                                 [
                                     self.chains[0][0],
-                                    (2 * self.chains[0][0] - 2 * self.chains[0][1] - 1),
+                                    (2 * self.chains[0][0] - 2 * self.chains[0][1] + 1),
                                     1,
                                     self.chains[0][2],
                                     0,

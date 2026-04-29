@@ -727,7 +727,6 @@ class Lipid:
         RECORD.append("FORMULA: " + self.prettyFormula() + "\n")
         RECORD.append("SMILES: " + get_lipid_smiles(self.lipidclass, LIPID_BACKBONES[self.lipidclass][0],
                                                     LIPID_BACKBONES[self.lipidclass][1], self.chains) + "\n")
-        RECORD.append("NumPeaks: " + str(len(FRAGMENTS)) + "\n")
         #Add retention times if they are available
         if retention_times is not None:
             this_rt_entry = retention_times[retention_times["name"] == FullName]
@@ -738,6 +737,8 @@ class Lipid:
                     RECORD.append(f"RT_min: {this_rt_entry.iloc[0]["rt_min"]:.2f}\n")
                 if "rt_max" in this_rt_entry.columns.tolist():
                     RECORD.append(f"RT_max: {this_rt_entry.iloc[0]["rt_max"]:.2f}\n")
+
+        RECORD.append("NumPeaks: " + str(len(FRAGMENTS)) + "\n")
 
 
         for f in FRAGMENTS:
@@ -883,10 +884,8 @@ class NAcylGPL(Lipid):
     for c1 in chain1_ranges:
         for c2 in chain2_ranges:
             for c3 in chain3_ranges:
-                if c2[0] < c1[0]:
-                    continue
-#                if ((c2[0] == c1[0]) and (c2[1] < c1[0])):
-#                    continue
+                if c2[0] < c1[0]: continue
+                if (c2[0] == c1[0] and c2[1] < c1[1]): continue
                 chain_sets.append([c1, c2, c3])
 
 
@@ -900,7 +899,7 @@ class SphingoLipid(Lipid):
 
     chain1_ranges = []
     for c in range(14, 23):
-        for d in range(0, 2):
+        for d in range(0, 3):
             for h in range(1, 2):
                 if (h > 1 and d > 0):
                     continue
@@ -982,6 +981,8 @@ class AcylSphingoLipid(Lipid):
     chain_sets = []
     for c1 in chain1_ranges:
         for c2 in chain2_ranges:
+            if c2[0] < c1[0]: continue
+            if (c2[0] == c1[0] and c2[1] < c1[1]): continue
             for c3 in chain3_ranges:
                 chain_sets.append([c1, c2, c3])
 
@@ -1090,7 +1091,7 @@ class CardioLipin(Lipid):
                     if c3[0] < c2[0]: continue
                     if (c3[0] == c2[0] and c3[1] < c2[1]): continue
                     if c4[0] < c3[0]: continue
-                    if (c4[0] == c3[0] and c3[1] < c2[1]): continue
+                    if (c4[0] == c3[0] and c4[1] < c3[1]): continue
 
                     # if c2[0] < c1[0]: continue
                     # if (c2[0] == c1[0] and c2[1] < c1[0]): continue

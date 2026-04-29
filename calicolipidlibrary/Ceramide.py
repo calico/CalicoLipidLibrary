@@ -4,11 +4,13 @@ from lipidRules import *
 # need to fix nomenclature
 class Ceramide(SphingoLipid):
 
+# h is one less than nomenclature as the first OH is defined as part of the head group
+# so h = 1 is a d-LCB species
     chain1_ranges = []
     for c in range(14, 23):
-        for d in range(0, 2):
-            for h in range(1, 3):
-                if (h > 1 and d > 0):
+        for d in range(0, 3):
+            for h in range(0, 3):
+                if (h > 1 and d > 1):
                     continue
                 chain1_ranges.append([c, d, h])
 
