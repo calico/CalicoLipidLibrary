@@ -74,7 +74,7 @@ def print_spectrum(lipid_class, chains=[], adduct=""):
 
     if lipid_class not in ALL_LIPID_CLASSES:
         print("Lipid Class '" + lipid_class + "' is not a supported lipid class.")
-        print("Suported lipid classes are:")
+        print("Supported lipid classes are:")
         for lipid in ALL_LIPID_CLASSES:
             print(lipid)
         return

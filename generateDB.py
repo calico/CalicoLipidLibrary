@@ -1,6 +1,9 @@
 import datetime
 import argparse
 import os
+import pandas as pd
+from nltk import rte_features
+
 from calicolipidlibrary import *
 
 
@@ -38,6 +41,13 @@ def cli_parser():
         default="",
     )
 
+    parser.add_argument(
+        "-r",
+        "--retention-times",
+        help="retention time file name",
+        dest="retention_time_file_name",
+        default="",
+    )
     return parser
 
 
@@ -64,6 +74,13 @@ if __name__ == "__main__":
         print("AVAILABLE LIPID CLASSES:")
         for lipid_class in ALL_LIPID_CLASSES:
             print(lipid_class)
+        print("-r <retention times>:")
+        print("\tSupply path and filename for a .tsv containing known retention times\n")
+        #Needs Name RT or Name and RT+rt_min+rt_max or Name and rt_min_rt_max?
+        print("\tFile must contain a column with \"name\" and \"rt\" and/or\n")
+        print("\t\"name\" and both of \"rt_max\" and \"rt_min\"\n")
+        print("\tDEFAULT: No retention times will be associated.\n")
+
         exit(0)
 
     args = cli_parser().parse_args()
@@ -85,6 +102,30 @@ if __name__ == "__main__":
         )
 
         exit(1)
+
+
+
+    if args.retention_time_file_name != "":
+        if not os.path.exists(args.retention_time_file_name):
+            print("Supplied retention time files does not exist. Exiting program.")
+            exit(1)
+
+        retention_times_df = pd.read_csv(args.retention_time_file_name, delimiter = '\t')
+        retention_times_df.columns = retention_times_df.columns.str.lower() #make column names lower case
+        rt_col_names = retention_times_df.columns.tolist()
+
+        #check that we have Name and RT or both of RT_min and RT_max (or all three)
+        if ("name" not in rt_col_names) and (("rt" in rt_col_names) or ("rt_max" not in rt_col_names and "rt_min" not in rt_col_names)):
+            print("Supplied retention time file is improperly formatted.\n")
+            print("\tSupply path and filename for a .tsv containing known retention times\n")
+            print("\tFile must contain a column with \"name\" and \"rt\" and/or\n")
+            print("\tboth of \"rt_max\" and \"rt_min\"\n")
+            print("\tExiting program.")
+            exit(1)
+        else:
+            retention_times_df = retention_times_df.loc[:, retention_times_df.columns.isin(["name", "rt", "rt_min", "rt_max"])]
+    else:
+        retention_times_df = None
 
     lipid_classes = []
     if len(args.lipid_classes) == 0:
@@ -128,18 +169,16 @@ if __name__ == "__main__":
 
     open(output_msp_file, "w")
 
-    for lipid_class in lipid_classes:
+    lipid_classes_list = list(lipid_classes)
+    lipid_classes_list.sort() #put lipid classes in alphabetical order
+    for lipid_class in lipid_classes_list:
         msg = "Enumerating spectra for " + lipid_class + "  ... "
         instantiate_str = lipid_class + " = " + lipid_class + "()"
         sys.stdout.write(msg)
-        eval_str = (
-            lipid_class
-            + ".generateLibrary(target='"
-            + output_msp_file
-            + "', mode='"
-            + ion
-            + "')"
-        )
+        eval_str = (f"{lipid_class}.generateLibrary(target='{output_msp_file}', mode='{ion}', retention_times=retention_times_df)"
+                    )
+
+
         exec(instantiate_str)
         eval(eval_str)
         sys.stdout.write(" DONE\n")
