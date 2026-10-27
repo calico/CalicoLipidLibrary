@@ -1,8 +1,9 @@
-from lipidRules import *
 
+from .lipidRules import *
 
-class BMP(GPL):
-    pos_adduct_set = ["[M+H]+"]
+class HexBMP(GPL):
+    pos_adduct_set = ["[M+NH4]+"]
+    neg_adduct_set = ["[M-H]-"]
 
     def theoreticalDigest(self):
         FRAGMENTS = []
@@ -12,36 +13,46 @@ class BMP(GPL):
         PREC = MASS + ADDUCT[self.adduct]
 
         if adduct in POS_ADDUCTS:
-            if adduct == "[M+Na]+" or adduct == "[M+K]+":
-                FRAGMENTS.append([PREC, 1000, "precursor"])
-                FRAGMENTS.append([PREC - H2O, 64, "NL water"])
+            if adduct == "[M+Na]+" or adduct == "[M+K]+" or adduct == "[M+NH4]+":
+
+                FRAGMENTS.append([PREC, 300, "precursor"])
+                FRAGMENTS.append([PREC - H2O, 50, "NL water"])
+                FRAGMENTS.append([PREC - MW("C6H12O6"), 50, "precursor - hexose"])
+                FRAGMENTS.append([PREC - MW("C6H10O5"), 50, "precursor - deoxyhexose"])
+
                 FRAGMENTS.append(
-                    [MW("C3H9O6P") + ADDUCT[adduct], 60, "glycerol-P + adduct"]
+                    [MW("C3H9O6P") + ADDUCT[adduct], 50, "glycerol-P + adduct"]
                 )
                 FRAGMENTS.append(
                     [
                         MW("C3H9O6P") - H2O + ADDUCT[adduct],
-                        54,
+                        350,
                         "deoxyglycerol-P + Adduct",
                     ]
                 )
                 FRAGMENTS.append(
-                    [MW("PO4H3") + ADDUCT[adduct], 36, "phosphoric acid + Adduct"]
+                    [MW("PO4H3") + ADDUCT[adduct], 50, "phosphoric acid + Adduct"]
                 )
 
                 for i in range(0, len(self.chains)):
                     chain = str(i + 1)
+
+                    FRAGMENTS.append([NL(self.chains[i]) + MW("C3H6O2") + PROTON, 10, "Glycerol + sn" + chain])
+                    FRAGMENTS.append([NL(self.chains[i]) + MW("C3H6O2") - H2O + PROTON, 1000, "Glycerol + sn" + chain + " - water"])
+                    FRAGMENTS.append([NL(self.chains[i]) + MW("C3H6O2")  - H2O + ADDUCT[adduct], 10, "Glycerol + sn" + chain + " - water + Adduct"])
+
+
                     FRAGMENTS.append(
                         [
                             PREC - NL(self.chains[i]) - MW("C3H4O"),
-                            378,
+                            10,
                             "NL (sn" + chain + " + deoxyglycerol)",
                         ]
                     )
                     FRAGMENTS.append(
                         [
                             PREC - NL(self.chains[i]) - MW("C3H6O2"),
-                            110,
+                            10,
                             "NL (sn" + chain + " + glycerol)",
                         ]
                     )
@@ -53,21 +64,21 @@ class BMP(GPL):
                             - MW("PO4H3")
                             - ADDUCT[adduct]
                             + PROTON,
-                            188,
+                            200,
                             "NL (sn" + chain + " + deoxyglycerol + adduct + phosphate)",
                         ]
                     )
                     FRAGMENTS.append(
                         [
                             PREC - NL(self.chains[i]) - MW("C3H4O") - MW("PO4H3"),
-                            5,
+                            10,
                             "NL (sn" + chain + " + deoxyglycerol + phosphate)",
                         ]
                     )
                     FRAGMENTS.append(
                         [
                             PREC - NL(self.chains[i]) - MW("C3H4O") - MW("PO4H3") + H2O,
-                            18,
+                            10,
                             "NL (sn" + chain + " + deoxyglycerol + phosphate) + H2O",
                         ]
                     )
@@ -76,42 +87,11 @@ class BMP(GPL):
                     FRAGMENTS.append(
                         [
                             PREC - NL(self.chains[i]) + H2O,
-                            17,
+                            10,
                             "NL sn" + chain + " ketene",
                         ]
                     )
-
-            if adduct == "[M+H]+":
-                FRAGMENTS.append([PREC, 1, "precursor"])
-                FRAGMENTS.append([PREC - H2O, 1, "NL water"])
-                FRAGMENTS.append([PREC - 2 * H2O, 158, "NL - 2x water"])
-                FRAGMENTS.append([PREC - MW("C3H9O6P"), 27, "NL glycerol-P"])
-
-                for i in range(0, len(self.chains)):
-                    chain = str(i + 1)
-
-                    FRAGMENTS.append(
-                        [
-                            NL(self.chains[i]) + MW("C3H4O") + PROTON,
-                            500,
-                            "(sn" + chain + " + deoxyglycerol)",
-                        ]
-                    )
-                    FRAGMENTS.append(
-                        [
-                            PREC - NL(self.chains[i]) - MW("C3H6O2"),
-                            2,
-                            "NL (sn" + chain + " + glycerol)",
-                        ]
-                    )
-                    FRAGMENTS.append(
-                        [
-                            PREC - NL(self.chains[i]) - H2O,
-                            3,
-                            "NL (sn" + chain + " ketene)",
-                        ]
-                    )
-
+        #These are just the exact fragments from BMPs until I have something more to work with
         elif adduct in NEG_ADDUCTS:
             FRAGMENTS.append([PREC, 501, "precursor"])
 
@@ -145,14 +125,3 @@ class BMP(GPL):
                 )
 
         return FRAGMENTS
-
-
-# x  = BMP("BMP",[[18,1,0], [18,1,0]],  adduct="[M+H]+")
-# print x.printNist()
-#
-#
-#
-# x  = BMP("BMP",[[10,0,0], [12,4,0]],  adduct="[M-H]-")
-# print x.printNist()
-
-# calicolipidlibrary.print_spectrum("BMP", [[18,1,0], [18,3,0]], "[M+H]+")

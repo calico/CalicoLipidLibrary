@@ -1,4 +1,4 @@
-from lipidRules import *
+from .lipidRules import *
 
 #For the purposes of this class, I am defining the O-Acyl as the sn3 = self.chains[2]
 class OAcylCeramide(AcylSphingoLipid):

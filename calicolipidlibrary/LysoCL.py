@@ -1,4 +1,4 @@
-from lipidRules import *
+from .lipidRules import *
 
 # NEEDS WORK....how to generate acyl combinations such that we get the right fragments....
 # for any 3 FA combination we need to cover the basis where each individual FA is on the glycerol by itself

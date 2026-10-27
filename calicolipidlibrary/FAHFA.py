@@ -1,4 +1,4 @@
-from lipidRules import *
+from .lipidRules import *
 
 
 # assumptions:  sn2 has the free carboxyl, sn1 is the esterified FA (this matches LipidMaps nomenclature).

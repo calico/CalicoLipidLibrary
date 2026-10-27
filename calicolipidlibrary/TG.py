@@ -1,5 +1,5 @@
 import sys
-from lipidRules import *
+from .lipidRules import *
 
 
 class TG(Triglyceride):

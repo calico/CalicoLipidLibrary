@@ -1,4 +1,4 @@
-from lipidRules import *
+from .lipidRules import *
 
 
 class LCB_P(LysoSphingoLipid):

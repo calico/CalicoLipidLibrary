@@ -1,4 +1,4 @@
-from lipidRules import *
+from .lipidRules import *
 
 
 # created in analagy to GcGM3 frag patterns from DO plasma

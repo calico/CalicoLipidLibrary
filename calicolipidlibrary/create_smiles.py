@@ -311,6 +311,7 @@ def get_glycerolipid_smiles(lipidclass, sn_smiles):
         "DGTS": "(=O)OC[C@H](COCCC(C(=O)[O-])[N+](C)(C)C)OC(=O)",
         "DMPE": "(=O)OC[C@H](COP(=O)(O)OCCN(C)C)OC(=O)",
         "FA": "(=O)O",
+        "HexBMP": "(=O)OC[C@@H](O)COP(=O)(O)OC[C@@H](O[C@@H]1O[C@H](CO)[C@H](O)[C@H](O)[C@H]1O)COC(=O)",
         "LPA": "(=O)OCC(COP(=O)(O)O)O",
         "LPC": "(=O)OC[C@@H](COP(=O)([O-])OCC[N+](C)(C)C)O",
         "LPE": "(=O)OC[C@H](COP(=O)(O)OCCN)O",

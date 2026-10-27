@@ -2,7 +2,7 @@ import re
 import sys
 from types import NoneType
 
-from create_smiles import *
+from .create_smiles import *
 from rdkit import Chem
 from rdkit.Chem import Descriptors
 from rdkit.Chem import rdMolDescriptors
@@ -138,7 +138,8 @@ ALL_LIPID_CLASSES = {
     "Sulfatide",
     "Taurine",
     "TG",  # 70
-    "OAcylCeramide"
+    "OAcylCeramide",
+    "HexBMP"
 }
 
 
@@ -271,6 +272,8 @@ LIPID_BACKBONES = {
     "BDP": ["bbGPL", ["acyl", "acyl", "acyl", "acyl"]],
     "CDP_DG": ["bbGPL", ["acyl", "acyl"]],
     "OAcylCeramide": ["bbAcylSL", ["sbase", "amide", "acyl"]],
+    "HexBMP": ["bbGPL", ["acyl", "acyl"]],
+
 
 }
 
@@ -350,7 +353,9 @@ LIPID_HEADS = {
     "HemiBMP": [6, 12, 0, 5, 1, 0],
     "BDP": [6, 11, 0, 4, 1, 0],
     "CDP_DG": [12, 19, 3, 11, 2, 0],
-    "OAcylCeramide": [0,0,0,0,0,0]
+    "OAcylCeramide": [0,0,0,0,0,0],
+    "HexBMP": [12, 23, 0, 11,1, 0]
+
 }
 
 
@@ -429,7 +434,8 @@ LIPID_MAPS = {
     "BDP": "GP0408",
     "CDP_DG": "GP1301",
     "OAcylCeramide": "SP0204",
-    "RetinylE": "PR0109"
+    "RetinylE": "PR0109",
+    "HexBMP": "???"
 }
 
 

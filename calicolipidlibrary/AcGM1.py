@@ -1,4 +1,4 @@
-from lipidRules import *
+from .lipidRules import *
 
 
 # created from DO plasma frag patterns
